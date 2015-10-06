@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
+<script type='text/javascript' src='./jquery-2.1.4.min.js'></script>
+<script type='text/javascript' src='./jQuery.tubeplayer.min.js'></script>
+
 <body>
 
 <h1>The weird part of youtube</h1>
 
-<p><iframe id="ytplayer" type="text/html" width="640" height="390"
-  src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-  frameborder="0"/></p>
-
+<div  id='youtube-player-container'> </div>
+<input type="text" ID="videoID">
+<a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'> 
+	<button type="button" id='play'>Change video</button>
+</a>
 </body>
+<script type="text/javascript">jQuery("#youtube-player-container").tubeplayer({
+	width: 600, // the width of the player
+	height: 450, // the height of the player
+	allowFullScreen: "true", // true by default, allow user to go full screen
+	initialVideo: "M7lc1UVf-VE", // the video that is loaded into the player
+	preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+	onPlay: function(id){}, // after the play method is called
+	onPause: function(){}, // after the pause method is called
+	onStop: function(){}, // after the player is stopped
+	onSeek: function(time){}, // after the video has been seeked to a defined point
+	onMute: function(){}, // after the player is muted
+	onUnMute: function(){} // after the player is unmuted
+});</script>
 </html>
