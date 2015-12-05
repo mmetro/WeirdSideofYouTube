@@ -29,7 +29,15 @@
         <span>Get Weird</span>
     </a>
 </body>
-<script type="text/javascript">jQuery("#youtube-player-container").tubeplayer({
+<script type="text/javascript">
+        function playNextVid() {
+          $.getJSON("./api/getvid", function(vid) {
+            console.log(vid);
+            jQuery("#youtube-player-container").tubeplayer("play", vid.id);
+          }); 
+        }
+
+        jQuery("#youtube-player-container").tubeplayer({
 	width: 800, // the width of the player
 	height: 600, // the height of the player
 	allowFullScreen: "true", // true by default, allow user to go full screen
@@ -47,11 +55,7 @@
 
 		//var title = document.querySelector("#title");
 		//title.style.visibility = "visible";		
-                var nextVid = jQuery.getJSON("./api/getvid").responseJSON;
-		$.getJSON("./api/getvid", function(vid) {
-                  console.log(vid);
-                  jQuery("#youtube-player-container").tubeplayer("play", vid.id);
-	        });
+		playNextVid();
         },
 	onPlayerPlaying: function(){
 		var theatrebox = document.querySelector("#theatre-box");
@@ -61,6 +65,10 @@
 		var title = document.querySelector("#title");
 		title.style.visibility = "hidden";
 	}, // after the player is muted
-	onUnMute: function(){} // after the player is unmuted
+	onUnMute: function(){}, // after the player is unmuted
+        // Error State Specific Functionality
+	onErrorNotFound: function(){playNextVid();}, // if a video cant be found
+	onErrorNotEmbeddable: function(){playNextVid();}, // if a video isnt embeddable
+	onErrorInvalidParameter: function(){playNextVid();} // if we've got an invalid param
 });</script>
 </html>
