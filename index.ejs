@@ -41,13 +41,18 @@
 	onSeek: function(time){}, // after the video has been seeked to a defined point
 	onMute: function(){},
 	onPlayerEnded: function(){
-		var theatrebox = document.querySelector("#theatre-box");
-		theatrebox.style.visibility = "hidden";
+		//var theatrebox = document.querySelector("#theatre-box");
+		//theatrebox.style.visibility = "hidden";
 
 
-		var title = document.querySelector("#title");
-		title.style.visibility = "visible";		
-	},
+		//var title = document.querySelector("#title");
+		//title.style.visibility = "visible";		
+                var nextVid = jQuery.getJSON("./api/getvid").responseJSON;
+		$.getJSON("./api/getvid", function(vid) {
+                  console.log(vid);
+                  jQuery("#youtube-player-container").tubeplayer("play", vid.id);
+	        });
+        },
 	onPlayerPlaying: function(){
 		var theatrebox = document.querySelector("#theatre-box");
 		theatrebox.style.visibility = "visibile";
