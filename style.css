@@ -15,7 +15,6 @@ body {
 #youtube-player-container {
     z-index: 101;
     margin: auto;
-    width: 50%;
     padding-top: 7%;
 }
 
