@@ -333,3 +333,14 @@ h1:hover {
     display: none;
   }
 }
+
+footer{
+  background: rgba(180, 180, 190, 0.5);
+  border: 2px solid #8AC007;
+  position: fixed;
+  width: 50%;
+  bottom:-1%;
+  left:25%;
+  right:25%;
+  padding-bottom: 0%;
+}
