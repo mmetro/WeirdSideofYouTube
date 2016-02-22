@@ -26,8 +26,8 @@
 		title.style.visibility = "visible";'	>
 <div  id='youtube-player-container'> </div>
 
-<a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'> 
-	
+<a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'>
+
 </a>
 </div>
     <a class="button" onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
@@ -45,8 +45,20 @@
           $.getJSON("./api/getvid", function(vid) {
             console.log(vid);
             jQuery("#youtube-player-container").tubeplayer("play", vid.id);
-          }); 
+          });
         }
+        $(document).keydown(function(e) {
+                switch(e.which) {
+                    case 39: // right (fast-forward)
+                      playNextVid();
+                    break;
+                    case 32: // right (fast-forward)
+                      playNextVid();
+                    break;
+                    default: return; // exit this handler for other keys
+                }
+                e.preventDefault(); // prevent the default action (scroll / move caret)
+            });
 
         jQuery("#youtube-player-container").tubeplayer({
 	width: 800, // the width of the player
