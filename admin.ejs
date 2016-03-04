@@ -21,18 +21,17 @@
 	$(function(){
 	   	$.getJSON("./api/getvidsfrom/1/50", function(videos) {
 	   		console.log(videos);
-	      $.each(videos, function(key, value) {
-	      	var $tr = $('<tr>').append(
-	        	$('<td>').text("Buttons go here"),
-	        	$('<td>').text(value.vidID),
-	        	$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.vidID + '/default.jpg" />'),
-	        	$('<td>').text("Title goes here"),
-	        	$('<td>').text("Views here"),
-	        	$('<td>').text("Skip goes here"),
-	        	$('<td>').text("Error goes here")
-	        ).appendTo( "#videoTable" );
-	        console.log($tr.wrap('<p>').html());
-	    	});
+			$.each(videos, function(key, value) {
+			$('<tr>').append(
+				$('<td>').text("Buttons go here"),
+				$('<td>').text(value.vidID),
+				$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.vidID + '/default.jpg" />'),
+				$('<td>').text("Title goes here"),
+				$('<td>').text("Views here"),
+				$('<td>').text("Skip goes here"),
+				$('<td>').text("Error goes here")
+			).appendTo( "#videoTable" );
+			});
 	    });
  	 });
 </script>

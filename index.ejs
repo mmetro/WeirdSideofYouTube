@@ -42,7 +42,7 @@
 </footer>
 <script type="text/javascript">
         function playNextVid() {
-          $.getJSON("./api/randomvid", function(vid) {
+          $.getJSON("./api/getrandomvid", function(vid) {
             console.log(vid);
             jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
           });
