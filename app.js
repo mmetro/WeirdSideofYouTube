@@ -60,4 +60,8 @@ app.get('/api/getvidsfrom/:start/:end', function(req, res, next) {
   });
 });
 
+app.get('/admin',function(req,res){
+  res.render(path.join(__dirname+'/admin'));
+});
+
 app.listen(80);
