@@ -42,9 +42,9 @@
 </footer>
 <script type="text/javascript">
         function playNextVid() {
-          $.getJSON("./api/getvid", function(vid) {
+          $.getJSON("./api/randomvid", function(vid) {
             console.log(vid);
-            jQuery("#youtube-player-container").tubeplayer("play", vid.id);
+            jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
           });
         }
         $(document).keydown(function(e) {
