@@ -2,7 +2,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
-var database = require('./db.js');
+var database = require('./config/db');
 
 var express = require("express");
 var app     = express();
@@ -10,11 +10,13 @@ var path    = require("path");
 
 // Configuring Passport
 var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
@@ -45,9 +47,20 @@ MongoClient.connect(database.url, function(err, db) {
       assert.equal(null, err);
       db.collection('videos').count(function(err, result){
         db.collection('videos').findOne({_id: Math.floor(Math.random() * (result-1)) + 1}, { "vidID": 1, _id:0 }, function(err, document) {
-          res.render(path.join(__dirname+'/index'), { videoID: document["vidID"]});
+          res.render('index', { videoID: document["vidID"]});
         });
       });
+  });
+
+  app.get('/login',
+    function(req, res){
+      res.render('login');
+  });
+
+  app.post('/login', 
+        passport.authenticate('local', { failureRedirect: '/login' }),
+        function(req, res) {
+          res.redirect('/');
   });
 
   app.get('/api/getrandomvid',function(req,res){
@@ -94,7 +107,7 @@ MongoClient.connect(database.url, function(err, db) {
   });
 
   app.get('/admin',function(req,res){
-    res.render(path.join(__dirname+'/admin'));
+    res.render('admin');
   });
 
   app.listen(80);
