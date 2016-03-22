@@ -15,10 +15,13 @@ var expressSession = require('express-session');
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
+
+require('./app/routes.js')(app, passport);
 
 MongoClient.connect(database.url, function(err, db) {
   // NOTE: if we add or remove videos, how will we handle this?
