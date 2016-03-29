@@ -2,11 +2,19 @@
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
-var routes = require('./routes');
 var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
+// express middleware
+//var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var errorHandler = require('errorhandler');
 
 // global config
 var app = express();
@@ -14,25 +22,28 @@ app.set('port', process.env.PORT || 1337);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
-app.use(express.logger());
-app.use(express.favicon());
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser('CHANGEMESECRET'));
-app.use(express.session());
+app.use(logger('dev'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
+app.use(cookieParser('CHANGEMESECRET'));
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'sessionsecret' }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(app.router);
+//app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // env config
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
+var env = process.env.NODE_ENV || 'development';
+if ('development' == env) {
+    app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+}
+else {
     app.use(express.errorHandler());
-});
+}
 
 // passport config
 var Account = require('./models/account');
@@ -44,7 +55,7 @@ passport.deserializeUser(Account.deserializeUser());
 mongoose.connect('mongodb://localhost/passport_local_mongoose');
 
 // routes
-require('./routes')(app);
+var router = require('./router')(app);
 
 // mongo model
 // var Model_Name = require('add_your_models_here');
