@@ -21,10 +21,16 @@
   "author": "Michael Herman <michael@mherman.org>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "chance": "^1.0.1",
+    "cookie-parser": "^1.4.1",
+    "errorhandler": "^1.4.3",
     "express": "^5.0.0-alpha.2",
     "jade": "^1.11.0",
+    "method-override": "^2.3.5",
     "mongodb": "^2.1.13",
     "mongoose": "^4.4.10",
+    "morgan": "^1.7.0",
     "passport": "*",
     "passport-local": "*",
     "passport-local-mongoose": "*"
