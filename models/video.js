@@ -13,26 +13,4 @@ var Video = new Schema({
   submittedUser: {type: String, default: '' }
 });
 
-Video.pre('save', function(next) {
-    var doc = this;
-    counter.findByIdAndUpdate({_id: 'videos'}, {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
-        if(error)
-            return next(error);
-        console.log(counter.seq);
-        doc._id = counter.seq;
-        next();
-    });
-});
-
-Video.post('remove', function(removed){
-	console.log('removed', removed._id);
-    //var doc = this;
-    //counter.findByIdAndUpdate({_id: 'entityId'}, {$dec: { seq: 1} }, function(error, counter)   {
-    //    if(error)
-    //        return next(error);
-    //    doc.testvalue = counter.seq;
-    //    next();
-    //});
-});
-
 module.exports = mongoose.model('Video', Video);
