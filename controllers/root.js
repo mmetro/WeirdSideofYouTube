@@ -1,11 +1,15 @@
 var passport = require('passport');
 var Account = require('../models/account');
+var api = require('./api');
 
 // Invoke 'strict' JavaScript mode
 'use strict';
 
 exports.getIndex = function(req, res) {
-    res.render('index', { user : req.user });
+  api.randomVideoID(function(err, vidID)
+  {
+    res.render('index', { videoID : vidID });
+  });
 };
 
 exports.getRegister = function(req, res) {

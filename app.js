@@ -53,13 +53,11 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose');
+var database = require('./config/db');
+mongoose.connect(database.url);
 
 // routes
 var router = require('./router')(app);
-
-// mongo model
-// var Model_Name = require('add_your_models_here');
 
 app.listen(app.get('port'), function(){
   console.log(("Express server listening on port " + app.get('port')))
