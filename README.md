@@ -1,1 +1,3 @@
-I am working on restructuring  the app, following this tutorial: http://mherman.org/blog/2013/11/11/user-authentication-with-passport-dot-js/
+Check out our live demo:
+
+www.weirdtube.wtf
