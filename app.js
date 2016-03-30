@@ -18,7 +18,7 @@ var errorHandler = require('errorhandler');
 
 // global config
 var app = express();
-app.set('port', process.env.PORT || 1337);
+app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 //app.set('view engine', 'jade');
 app.set('view engine', 'ejs');  
