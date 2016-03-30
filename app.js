@@ -1,118 +1,64 @@
-
-var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
-var ObjectId = require('mongodb').ObjectID;
-var database = require('./config/db');
-
-var express = require("express");
-var app     = express();
-var path    = require("path");
-
-// Configuring Passport
+// dependencies
+var fs = require('fs');
+var http = require('http');
+var express = require('express');
+var path = require('path');
+var mongoose = require('mongoose');
 var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
-var expressSession = require('express-session');
-app.use(expressSession({secret: 'mySecretKey'}));
+var LocalStrategy = require('passport-local').Strategy;
+
+// express middleware
+//var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var errorHandler = require('errorhandler');
+
+// global config
+var app = express();
+app.set('port', process.env.PORT || 1337);
+app.set('views', __dirname + '/views');
+//app.set('view engine', 'jade');
+app.set('view engine', 'ejs');  
+app.set('view options', { layout: false });
+app.use(logger('dev'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
+app.use(cookieParser('CHANGEMESECRET'));
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'sessionsecret' }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+//app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/'));
+// env config
+var env = process.env.NODE_ENV || 'development';
+if ('development' == env) {
+    app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+}
+else {
+    app.use(express.errorHandler());
+}
 
-require('./app/routes.js')(app, passport);
+// passport config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
-MongoClient.connect(database.url, function(err, db) {
-  // NOTE: if we add or remove videos, how will we handle this?
-  // Should we keep track of it on our own, or should we make a call to MongoDB each time?
-  // I'm thinking that we should make the MongoDB call each time a video is added/removed
-  var smallestID = 0
-  var largestID = 0
+// mongoose
+var database = require('./config/db');
+mongoose.connect(database.url);
 
-  assert.equal(null, err);
-  db.collection('videos').find({}, { _id: 1 }).sort({_id: 1}).limit(1).next( function(err, document) {
-    smallestID = document["_id"];
-    console.log("Smallest _id:");
-    console.log(smallestID);
-  });
+// routes
+var router = require('./router')(app);
 
-  assert.equal(null, err);
-  db.collection('videos').find({}, { _id: 1 }).sort({_id: -1}).limit(1).next( function(err, document) {
-    largestID = document["_id"];
-    console.log("Largest _id:");
-    console.log(largestID);
-  });
-
-
-  app.get('/',function(req,res){
-    var randomID;
-      assert.equal(null, err);
-      db.collection('videos').count(function(err, result){
-        db.collection('videos').findOne({_id: Math.floor(Math.random() * (result-1)) + 1}, { "vidID": 1, _id:0 }, function(err, document) {
-          res.render('index', { videoID: document["vidID"]});
-        });
-      });
-  });
-
-  app.get('/login',
-    function(req, res){
-      res.render('login');
-  });
-
-  app.post('/login', 
-        passport.authenticate('local', { failureRedirect: '/login' }),
-        function(req, res) {
-          res.redirect('/');
-  });
-
-  app.get('/api/getrandomvid',function(req,res){
-    var randomID;
-      assert.equal(null, err);
-      db.collection('videos').count(function(err, result){
-        db.collection('videos').findOne({_id: Math.floor(Math.random() * (result-1)) + 1}, { "vidID": 1, _id:0 }, function(err, document) {
-          res.json(document);
-        });
-      });
-  });
-
-  app.get('/api/getvid/:id',function(req,res){
-    var __id = parseInt(req.params.id);
-      assert.equal(null, err);
-      db.collection('videos').findOne({_id: __id}, { "vidID": 1, _id:0 }, function(err, document) {
-        res.json(document);
-      });
-  });
-
-  // get up to 50 videos at once
-  app.get('/api/getvidsfrom/:start/:end', function(req, res, next) {
-    var start_id = parseInt(req.params.start);
-    var end_id = parseInt(req.params.end);
-    if(start_id < smallestID)
-    {
-      start_id = smallestID;
-    }
-    if(end_id < start_id)
-    {
-      end_id = start_id;
-    }
-    var len = end_id - start_id + 1;
-    if(len > 50)
-    {
-      len = 50;
-    }
-      assert.equal(null, err);
-      db.collection('videos').count(function(err, result){
-        db.collection('videos').find({_id: {$gte: start_id }}, { "vidID": 1, _id:0 }).limit(len).toArray(  function(err, document) {
-          res.json(document);
-        });
-      });
-  });
-
-  app.get('/admin',function(req,res){
-    res.render('admin');
-  });
-
-  app.listen(3000);
-
+app.listen(app.get('port'), function(){
+  console.log(("Express server listening on port " + app.get('port')))
 });
