@@ -22,20 +22,15 @@ exports.addVideo = function(vid, callback)
 
 exports.removeVideo = function(vidID)
 {
-	console.log('[' + vidID + ']');
 	Video.findOne({'videoID': vidID}, function (error, video){
-		console.log(video);
 		var __id = video._id;
-		console.log(__id);
 		Counter.findById('videos', function(error, counter)
 		{
-			console.log(counter);
-			console.log(counter.seq);
 			Video.findOne({'_id': counter.seq}, function (error, _video){
 				video.remove();
 				Video.create({ 'videoID' : _video.videoID, '_id': __id}, function(err, vid){
 					_video.remove();
-					counter._id = counter._id - 1;
+					counter.seq = counter.seq - 1;
 					counter.save();
 				});
 			});	
