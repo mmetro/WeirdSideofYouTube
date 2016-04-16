@@ -18,11 +18,6 @@ exports.needsAdmin = function(req, res, next) {
 exports.getIndex = function(req, res) {
     res.render('admin/index');
 };
-
-exports.getSubmitVid = function(req, res) {
-  res.render('submit', { });
-};
-
 exports.postSubmitVid = function(req, res) {
   api.addVideo(req.body.videoID, function(err, vid){
     if(err)
@@ -30,10 +25,6 @@ exports.postSubmitVid = function(req, res) {
       else
         res.redirect('/admin');
   });
-};
-
-exports.getRemoveVid = function(req, res) {
-  res.render('remove', { });
 };
 
 exports.postRemoveVid = function(req, res) {

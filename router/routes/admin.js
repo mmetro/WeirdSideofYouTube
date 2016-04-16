@@ -6,9 +6,7 @@ var admin = require('../../controllers/admin');
 
 router.all('*', admin.needsAdmin);
 router.get('/', admin.getIndex);
-router.get('/submit', admin.getSubmitVid);
 router.post('/submit', admin.postSubmitVid);
-router.get('/remove', admin.getRemoveVid);
 router.post('/remove', admin.postRemoveVid);
 
 module.exports = router;
