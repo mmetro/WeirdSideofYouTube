@@ -8,7 +8,7 @@ var api = require('./api');
 exports.getIndex = function(req, res) {
   api.randomVideoID(function(err, vidID)
   {
-    res.render('index', { videoID : vidID });
+    res.render('index', { videoID : vidID, user: req.user });
   });
 };
 

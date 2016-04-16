@@ -55,23 +55,28 @@ exports.getRandomVid = function(req, res) {
 	});
 };
 
-exports.getSubmitVid = function(req, res) {
-	res.render('submit', { });
-};
-
-exports.postSubmitVid = function(req, res) {
-	exports.addVideo(req.body.videoID, function(err, vid){
-		if(err)
-        	console.log(err);
-    	else
-    		res.send('Video with ID ' + req.body.videoID + ' submitted: ' + vid);
+exports.getVidRange = function(req, res) {
+  var start_id = parseInt(req.params.start);
+  var end_id = parseInt(req.params.end);
+  Counter.findById('videos', function(error, counter)
+	{
+		var smallestID = 1;
+		var largestID = counter.seq;
+		if(start_id < smallestID)
+    {
+      start_id = smallestID;
+    }
+    if(end_id < start_id)
+    {
+      end_id = start_id;
+    }
+    var len = end_id - start_id + 1;
+    if(len > 50)
+    {
+      len = 50;
+    }
+    Video.find({_id: {$gte: start_id }}, 'videoID').limit(len).lean().exec(function (err, docs) {
+    	res.json(docs);
+    });
 	});
-};
-
-exports.getRemoveVid = function(req, res) {
-	res.render('remove', { });
-};
-
-exports.postRemoveVid = function(req, res) {
-	exports.removeVideo(req.body.videoID);
 };

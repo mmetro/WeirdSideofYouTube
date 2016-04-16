@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
-<script type='text/javascript' src='./jquery-2.1.4.min.js'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
 <body>
+
+<form action="/admin/submit" method="post">
+	<div>
+	<label>Video ID:</label>
+	<input type="text" name="videoID"/><br/>
+	</div>
+	<div>
+	<input type="submit" value="Submit"/>
+	</div>
+</form>
+
+<form action="/admin/remove" method="post">
+	<div>
+	<label>Video ID:</label>
+	<input type="text" name="videoID"/><br/>
+	</div>
+	<div>
+	<input type="submit" value="Remove"/>
+	</div>
+</form>
 
 <table id="videoTable" cellspacing="5">
 	<tr>
@@ -19,13 +39,13 @@
 
 <script type="text/javascript">
 	$(function(){
-	   	$.getJSON("./api/getvidsfrom/1/50", function(videos) {
+	   	$.getJSON("./api/getvidrange/1/50", function(videos) {
 	   		console.log(videos);
 			$.each(videos, function(key, value) {
 			$('<tr>').append(
 				$('<td>').text("Buttons go here"),
-				$('<td>').text(value.vidID),
-				$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.vidID + '/default.jpg" />'),
+				$('<td>').text(value.videoID),
+				$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 				$('<td>').text("Title goes here"),
 				$('<td>').text("Views here"),
 				$('<td>').text("Skip goes here"),
