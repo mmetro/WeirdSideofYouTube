@@ -3,26 +3,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type='text/javascript' src='./js/jQuery.tubeplayer.min.js'></script>
 <link rel="stylesheet" type="text/css" href="./css/weirdStyle.css">
-
-<body>
-
 <div id='cssmenu'>
 <ul>
-   <li class='active'><a href='/'><span>Home</span></a></li>
-   <%if (user) { %>
-    <%if (user.admin) { %>
-      <li><a href='/admin'><span>Admin Panel</span></a></li>
-    <% } %>
-    <li><p> You are currently logged in as <%= user.username %> </p>
-    <a href="/logout"> Logout </a></li>
-   <% } %>
-   <%if (!user) { %>
-    <li><a href='/login'><span>Log In</span></a></li>
-    <li><a href='/register'><span>Register</span></a></li>
-   <% } %>
-   <!--<li class='last'><a href='#'><span>About Us</span></a></li>-->
+   <li class='active'><a href='#'><span>Home</span></a></li>
+   <li><a href='#'><span>Account</span></a></li>
+   <li><a href='#'><span>Top Videos</span></a></li>
+   <li class='last'><a href='#'><span>About Us</span></a></li>
 </ul>
 </div>
+<body>
 <div  id='title'>
 <t1>The Weird Part of YouTube</t1>
 </div>

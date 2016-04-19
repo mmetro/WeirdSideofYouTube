@@ -10,6 +10,7 @@ body {
     background-size:80px 140px;
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     text-align: center ;
+    margin: 0;
 }
 
 #youtube-player-container {
@@ -17,6 +18,7 @@ body {
     margin: auto;
     padding-top: 7%;
 }
+
 
 t1{ /*title font*/
     -webkit-box-sizing: content-box;
@@ -69,12 +71,6 @@ t1:hover {
 
 
 .button {
-/*    position: absolute;
-    top: 100px;
-    left: 200px;
-    display: inline-block;
-    margin: 0 auto;*/
-
     -webkit-border-radius: 10px;
 
     -webkit-box-shadow:
@@ -87,6 +83,7 @@ t1:hover {
         0px 14px 6px -1px rgba(128,128,128,1); /* shadow */
 
     -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    float: center;
 }
 
 .button span {
@@ -155,47 +152,30 @@ t1:hover {
     text-shadow: 0px 1px #fff, 0px -1px #262F33;
 }
 
-        .button span:hover {
-            color: #AEBF3B;
-            text-shadow: 0px -1px #97A63A;
-            cursor: pointer;
-        }
+.button span:hover {
+    color: #AEBF3B;
+    text-shadow: 0px -1px #97A63A;
+    cursor: pointer;
+}
 
-        .button:active {
-            -webkit-box-shadow:
-                0px 3px rgba(128,128,128,1),
-                0px 4px rgba(118,118,118,1),
-                0px 5px rgba(108,108,108,1),
-                0px 6px rgba(98,98,98,1),
-                0px 7px rgba(88,88,88,1),
-                0px 8px rgba(78,78,78,1),
-                0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
-        }
+.button:active {
+    -webkit-box-shadow:
+        0px 3px rgba(128,128,128,1),
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 6px rgba(98,98,98,1),
+        0px 7px rgba(88,88,88,1),
+        0px 8px rgba(78,78,78,1),
+        0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+}
 
-        .button:active span{
-            -webkit-transform: translate(0, 5px); /* depth of button press */
-        }
+.button:active span{
+    -webkit-transform: translate(0, 5px); /* depth of button press */
+}
 
-    .button span:after {
-        content: ">";
-        display: block;
-        width: 10px;
-        height: 10px;
-
-        position: absolute;
-        right: 14px;
-        top: 12px;
-
-        font-family: 'Cabin';
-        font-weight: 700;
-        color: #AEBF3B;
-        text-shadow: 0px 1px #fff, 0px -1px #97A63A;
-        font-size: 26px;
-    }
 
 #cssmenu {
-  background: #gray;
-  width: auto;
+  background: rgba(180, 180, 190, 0.5);
 }
 #cssmenu ul {
   list-style: none;
