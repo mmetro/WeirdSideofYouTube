@@ -7,6 +7,8 @@ var Counter = require('../models/counters');
 var Chance = require('chance');
 var chance = new Chance();
 
+// internal function for adding a video to the database
+// vid is a string representing the youtube video ID
 exports.addVideo = function(vid, callback)
 {
     Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
@@ -20,6 +22,7 @@ exports.addVideo = function(vid, callback)
     });
 }
 
+// internal function for removing a video by youtube ID
 exports.removeVideo = function(vidID)
 {
 	Video.findOne({'videoID': vidID}, function (error, video){
@@ -38,6 +41,8 @@ exports.removeVideo = function(vidID)
 	});
 }
 
+// internal function for getting a random youtube ID.
+// the callback function expects an error as the first argument, and the video ID as the second
 exports.randomVideoID = function(callback)
 {
 	Counter.findById('videos', function (err, count) {
@@ -48,6 +53,8 @@ exports.randomVideoID = function(callback)
 	}); 
 };
 
+// Handler for a GET request for a random video.
+// sends the client a JSON object with the youtube video ID
 exports.getRandomVid = function(req, res) {
 	exports.randomVideoID(function(err, vidID)
 	{
@@ -55,6 +62,8 @@ exports.getRandomVid = function(req, res) {
 	});
 };
 
+// handler for a GET request for a range of videos
+// sends a JSON object containing the range of youtube video IDs
 exports.getVidRange = function(req, res) {
   var start_id = parseInt(req.params.start);
   var end_id = parseInt(req.params.end);
