@@ -15,21 +15,32 @@
 <div  id='title'>
 <t1>The Weird Part of YouTube</t1>
 </div>
-<div id='theatre-box' onclick='
-		var theatrebox = document.querySelector("#theatre-box");
-		theatrebox.style.visibility = "hidden";
+<div id='theatre-box'	>
+<div  id='youtube-player-container'>     
+    <a class="playerbutton" onclick='
+    document.querySelector("#theatre-box").style.visibility = "hidden";
 
-    jQuery("#youtube-player-container").tubeplayer("stop");
-		var title = document.querySelector("#title");
-		title.style.visibility = "visible";'	>
-<div  id='youtube-player-container'> </div>
+    document.querySelector("#cssmenu").style.visibility = "visible";
+    document.querySelector("#title").style.visibility = "visible";
+    document.querySelector("#gobutt").style.visibility = "visible";
+
+    jQuery("#youtube-player-container").tubeplayer("stop");'>
+        <span>Exit</span>
+    </a>
+    <a class="playerbutton" onclick="playNextVid();">
+        <span>Next</span>
+    </a>
+    <br>
+  </div>
 
 <a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'>
 
 </a>
 </div>
-    <a class="button" onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
+    <a class="gobutton" id='gobutt' onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
+    document.querySelector('#cssmenu').style.visibility = 'hidden';
     document.querySelector('#title').style.visibility = 'hidden';
+    document.querySelector('#gobutt').style.visibility = 'hidden';
     jQuery('#youtube-player-container').tubeplayer('play');">
         <span>Get Weird</span>
     </a>

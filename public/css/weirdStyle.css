@@ -69,8 +69,38 @@ t1:hover {
     background:rgba(0,0,0,0.7);
 }
 
+.playerbutton {
+  color: #fff;
+  background-color: #444;
+  padding: 15px 40px 10px 40px;
+  border: 1px solid #000;
+}
 
-.button {
+.playerbutton span {
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+
+    color: #666;
+    text-transform: uppercase;
+    font-family: 'Damion', cursive;
+    font-weight: 700;
+    font-size: 32px;
+    width: 25%;
+}
+
+.playerbutton:hover,
+.playerbutton.hover {
+  background-color: #999;
+  text-shadow: -1px 1px #27496d;
+}
+
+.playerbutton:active,
+.playerbutton.active {
+  background-color: #AAA;
+  text-shadow: -1px 1px #193047;
+}
+
+.gobutton {
     -webkit-border-radius: 10px;
 
     -webkit-box-shadow:
@@ -86,7 +116,7 @@ t1:hover {
     float: center;
 }
 
-.button span {
+.gobutton span {
     background-color: #E8E8E8;
 
     background-image:
@@ -152,13 +182,13 @@ t1:hover {
     text-shadow: 0px 1px #fff, 0px -1px #262F33;
 }
 
-.button span:hover {
+.gobutton span:hover {
     color: #AEBF3B;
     text-shadow: 0px -1px #97A63A;
     cursor: pointer;
 }
 
-.button:active {
+.gobutton:active {
     -webkit-box-shadow:
         0px 3px rgba(128,128,128,1),
         0px 4px rgba(118,118,118,1),
@@ -169,7 +199,7 @@ t1:hover {
         0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
 }
 
-.button:active span{
+.gobutton:active span{
     -webkit-transform: translate(0, 5px); /* depth of button press */
 }
 
