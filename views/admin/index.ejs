@@ -2,6 +2,7 @@
 <html>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <body>
 
 <form action="/admin/submit" method="post">
@@ -24,7 +25,7 @@
 	</div>
 </form>
 
-<table id="videoTable" cellspacing="5">
+<table id="videoTable" cellspacing="5" class="pure-table">
 	<tr>
 	   <th>Controls</th>
 	   <!-- The stats button should expand and show full statistics for a video.  We can hide some of the stats that show by default, or add more -->
@@ -35,7 +36,7 @@
 	   <th>Skip %</th>
 	   <th>Error %</th>
  	</tr>
-</table>	
+</table>
 
 <script type="text/javascript">
 	$(function(){
