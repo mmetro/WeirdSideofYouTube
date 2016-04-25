@@ -44,7 +44,12 @@
 	   		console.log(videos);
 			$.each(videos, function(key, value) {
 			$('<tr>').append(
-				$('<td>').text("Buttons go here"),
+				$('<td>').append(
+					$('<form>').attr("action","/admin/remove").attr("method","post").append(
+						$('<input>').attr("type","hidden").attr("name","videoID").attr("value",value.videoID),
+						$('<input>').attr("type","submit").attr("value","Delete Video")		
+					)
+				),
 				$('<td>').text(value.videoID),
 				$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 				$('<td>').text("Title goes here"),
