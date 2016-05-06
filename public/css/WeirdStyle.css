@@ -74,6 +74,7 @@ t1:hover {
   background-color: #444;
   padding: 15px 40px 10px 40px;
   border: 1px solid #000;
+  cursor:pointer;
 }
 
 .playerbutton span {
