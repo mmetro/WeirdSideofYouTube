@@ -11,8 +11,9 @@
     <%if (user.admin) { %>
       <li><a href='/admin'><span>Admin Panel</span></a></li>
     <% } %>
-    <li><p> You are currently logged in as <%= user.username %> </p>
+    <li>
     <a href="/logout"> Logout </a></li>
+    <li><p> You are currently logged in as <%= user.username %> </p></li>
    <% } %>
    <%if (!user) { %>
     <li><a href='/login'><span>Log In</span></a></li>
