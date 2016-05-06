@@ -5,24 +5,21 @@
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <body>
 
-<form action="/admin/submit" method="post">
-	<div>
+<form action="/admin/submit" method="post" class="pure-form">
+	<span>
 	<label>Video ID:</label>
-	<input type="text" name="videoID"/><br/>
-	</div>
-	<div>
+	<input type="text" name="videoID"/>
 	<input type="submit" value="Submit" class="pure-button"/>
-	</div>
+	</span>
 </form>
 
-<form action="/admin/remove" method="post">
-	<div>
+
+<form action="/admin/remove" method="post" class="pure-form">
+	<span>
 	<label>Video ID:</label>
-	<input type="text" name="videoID"/><br/>
-	</div>
-	<div>
+	<input type="text" name="videoID"/>
 	<input type="submit" value="Remove" class="pure-button"/>
-	</div>
+	</span>
 </form>
 
 <table id="videoTable" cellspacing="5" class="pure-table">
