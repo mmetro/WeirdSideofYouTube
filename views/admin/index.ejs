@@ -45,9 +45,9 @@
 			$.each(videos, function(key, value) {
 			$('<tr>').append(
 				$('<td>').append(
-					$('<form>').attr("action","/admin/remove").attr("method","post").append(
-						$('<input>').attr("type","hidden").attr("name","videoID").attr("value",value.videoID),
-						$('<input>').attr("type","submit").attr("value","Delete Video")		
+					$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
+						$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
+						$('<input>').attr({"type": "submit", "value": "Delete Video"})
 					)
 				),
 				$('<td>').text(value.videoID),
