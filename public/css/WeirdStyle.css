@@ -78,7 +78,7 @@ t1:hover {
   background-image: linear-gradient(to bottom, #707070, #000000);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0px;
+  border-radius: 10px;
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
@@ -86,6 +86,8 @@ t1:hover {
   border: solid #000 2px;
   text-decoration: none;
   cursor:pointer;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
 }
 
 .playerbutton span {
@@ -220,10 +222,10 @@ t1:hover {
     -webkit-transform: translate(0, 5px); /* depth of button press */
 }
 
-
 #cssmenu {
   background: rgba(180, 180, 190, 0.5);
 }
+
 #cssmenu ul {
   list-style: none;
   margin: 0;
@@ -232,6 +234,7 @@ t1:hover {
   display: block;
   zoom: 1;
 }
+
 #cssmenu ul:after {
   content: " ";
   display: block;
@@ -240,17 +243,21 @@ t1:hover {
   clear: both;
   visibility: hidden;
 }
+
 #cssmenu ul li {
   display: inline-block;
   padding: 0;
   margin: 0;
 }
+
 #cssmenu.align-right ul li {
   float: right;
 }
+
 #cssmenu.align-center ul {
   text-align: center;
 }
+
 #cssmenu ul li a {
   color: #ffffff;
   text-decoration: none;
@@ -267,12 +274,15 @@ t1:hover {
   -o-transition: color .25s;
   transition: color .25s;
 }
+
 #cssmenu ul li a:hover {
   color: #333333;
 }
+
 #cssmenu ul li a:hover:before {
   width: 100%;
 }
+
 #cssmenu ul li a:after {
   content: "";
   display: block;
@@ -284,6 +294,7 @@ t1:hover {
   background: #ffffff;
   opacity: .5;
 }
+
 #cssmenu ul li a:before {
   content: "";
   display: block;
@@ -299,23 +310,29 @@ t1:hover {
   -o-transition: width .25s;
   transition: width .25s;
 }
+
 #cssmenu ul li.last > a:after,
 #cssmenu ul li:last-child > a:after {
   display: none;
 }
+
 #cssmenu ul li.active a {
   color: #333333;
 }
+
 #cssmenu ul li.active a:before {
   width: 100%;
 }
+
 #cssmenu.align-right li.last > a:after,
 #cssmenu.align-right li:last-child > a:after {
   display: block;
 }
+
 #cssmenu.align-right li:first-child a:after {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   #cssmenu ul li {
     float: none;
@@ -339,4 +356,3 @@ t1:hover {
     display: none;
   }
 }
-
