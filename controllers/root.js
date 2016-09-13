@@ -51,6 +51,6 @@ exports.getLogout = function(req, res) {
 };
 
 // handler for the GET request for the about page
-exports.getLogout = function(req, res) {
+exports.getAbout = function(req, res) {
     res.render('about', { });
 };
