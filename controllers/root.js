@@ -49,3 +49,8 @@ exports.getLogout = function(req, res) {
     req.logout();
     res.redirect('/');
 };
+
+// handler for the GET request for the about page
+exports.getLogout = function(req, res) {
+    res.render('about', { });
+};
