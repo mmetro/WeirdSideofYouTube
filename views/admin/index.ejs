@@ -35,9 +35,15 @@
  	</tr>
 </table>
 
+<a class="nextbutton" onclick="loadNextPage();">
+        <span>Next</span>
+</a>
+
 <script type="text/javascript">
+	var currentVideoID = 1;
+
 	$(function(){
-	   	$.getJSON("./api/getvidrange/1/50", function(videos) {
+	   	$.getJSON("./api/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 	   		console.log(videos);
 			$.each(videos, function(key, value) {
 			$('<tr>').append(
@@ -57,6 +63,13 @@
 			});
 	    });
  	 });
+
+	 function loadNextPage() {
+          $.getJSON("./api/getrandomvid", function(vid) {
+            console.log(vid);
+            jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
+          });
+        }
 </script>
 
 </body>
