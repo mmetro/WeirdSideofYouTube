@@ -55,16 +55,16 @@
             // 
             // webBrowser3
             // 
-            this.webBrowser3.Location = new System.Drawing.Point(74, 26);
+            this.webBrowser3.Location = new System.Drawing.Point(12, 12);
             this.webBrowser3.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser3.Name = "webBrowser3";
-            this.webBrowser3.Size = new System.Drawing.Size(250, 250);
+            this.webBrowser3.Size = new System.Drawing.Size(433, 360);
             this.webBrowser3.TabIndex = 2;
             this.webBrowser3.Url = new System.Uri("http://www.weirdtube.wtf", System.UriKind.Absolute);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(74, 317);
+            this.button1.Location = new System.Drawing.Point(68, 378);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
