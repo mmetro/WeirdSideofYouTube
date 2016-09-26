@@ -16,5 +16,15 @@ namespace WeirdSideWindows
         {
             InitializeComponent();
         }
+
+        private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
