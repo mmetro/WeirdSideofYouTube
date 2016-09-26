@@ -24,7 +24,9 @@ namespace WeirdSideWindows
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser3.Document.InvokeScript("nextVideo");
+            var json = new System.Net.WebClient().DownloadString("http://www.weirdtube.wtf/api/getrandomvid/");
+            dynamic data = JObject.Parse(json);
+            webBrowser2.Url = "https:////www.youtube.com//watch?v=" + data.vidID;
         }
     }
 }
