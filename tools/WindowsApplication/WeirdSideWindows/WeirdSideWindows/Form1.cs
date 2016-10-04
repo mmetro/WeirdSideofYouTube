@@ -28,5 +28,20 @@ namespace WeirdSideWindows
             dynamic data = JObject.Parse(json);
             webBrowser2.Url = "https:////www.youtube.com//watch?v=" + data.vidID;
         }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+
     }
+
+    private void visitWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void visitWebsiteToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+      System.Diagnostics.Process.Start("http://www.weirdtube.wtf");
+    }
+  }
 }
