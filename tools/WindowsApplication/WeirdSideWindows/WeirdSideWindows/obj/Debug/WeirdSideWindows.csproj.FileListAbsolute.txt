@@ -12,3 +12,7 @@ D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\Wei
 D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.Form1.resources
 D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.Properties.Resources.resources
 D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.csproj.GenerateResource.Cache
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\bin\Debug\WeirdSideWindows.exe
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\bin\Debug\WeirdSideWindows.pdb
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.exe
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.pdb
