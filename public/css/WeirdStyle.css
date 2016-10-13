@@ -115,6 +115,21 @@ t1:hover {
   text-shadow: -1px 1px #193047;
 }
 
+.titlebox {
+
+    -webkit-box-shadow:
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 6px rgba(98,98,98,1),
+        0px 7px rgba(88,88,88,1),
+        0px 8px rgba(78,78,78,1),
+        0px 14px 6px -1px rgba(128,128,128,1); /* shadow */
+
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    float: center;
+}
+
 .gobutton {
     -webkit-border-radius: 10px;
 
