@@ -47,7 +47,7 @@ exports.randomVideoID = function(callback)
 {
 	Counter.findById('videos', function (err, count) {
 		var rand = chance.integer({min: 1, max: (count.seq-1)});;
-		Video.findById(rand, function (err, myDocument) {
+		Video.findByIdAndUpdate(rand, {$inc: { views: 1} }, function (err, myDocument) {
 			callback(err, myDocument.videoID);
 		});
 	}); 
@@ -84,7 +84,7 @@ exports.getVidRange = function(req, res) {
     {
       len = 50;
     }
-    Video.find({_id: {$gte: start_id }}, 'videoID').limit(len).lean().exec(function (err, docs) {
+    Video.find({_id: {$gte: start_id }}, {'videoID':1, 'views':1}).limit(len).lean().exec(function (err, docs) {
     	res.json(docs);
     });
 	});
