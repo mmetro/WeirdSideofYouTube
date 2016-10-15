@@ -67,61 +67,41 @@
 	    });
  	 });
 	 
-	 $('#nextbutton').click(function(){
-		if(currentVideoID < 100){
-			$('#videoTable td').remove();
-			currentVideoID += 50;
-			$(function(){
-				$.getJSON("./api/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
-					console.log(videos);
-					$.each(videos, function(key, value) {
-					$('<tr>').append(
-						$('<td>').append(
-							$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-								$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
-								$('<input>').attr({"type": "submit", "value": "Delete Video"})
-							)
-						),
-						$('<td>').text(value.videoID),
-						$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-						$('<td>').text("Title goes here"),
-						$('<td>').text("Views here"),
-						$('<td>').text("Skip goes here"),
-						$('<td>').text("Error goes here")
-					).appendTo( "#videoTable" );
-					});
-				});
-			});
-		}
+	 $('#nextbutton').click(function(){	
+		$('#videoTable tr').remove();
+		currentVideoID += 50;
+		loadNewTable();
 	 });
 	 
 	 $('#previousbutton').click(function(){
 		if(currentVideoID > 50){
-			$('#videoTable td').remove();
+			$('#videoTable tr').remove();
 			currentVideoID -= 50;
-			$(function(){
-				$.getJSON("./api/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
-					console.log(videos);
-					$.each(videos, function(key, value) {
-					$('<tr>').append(
-						$('<td>').append(
-							$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-								$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
-								$('<input>').attr({"type": "submit", "value": "Delete Video"})
-							)
-						),
-						$('<td>').text(value.videoID),
-						$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-						$('<td>').text("Title goes here"),
-						$('<td>').text("Views here"),
-						$('<td>').text("Skip goes here"),
-						$('<td>').text("Error goes here")
-					).appendTo( "#videoTable" );
-					});
+			loadNewTable();
+		}
+	 });
+	 
+	function loadNewTable(){
+			$.getJSON("./api/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
+				console.log(videos);
+				$.each(videos, function(key, value) {
+				$('<tr>').append(
+					$('<td>').append(
+						$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
+							$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
+							$('<input>').attr({"type": "submit", "value": "Delete Video"})
+						)
+					),
+					$('<td>').text(value.videoID),
+					$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+					$('<td>').text("Title goes here"),
+					$('<td>').text("Views here"),
+					$('<td>').text("Skip goes here"),
+					$('<td>').text("Error goes here")
+				).appendTo( "#videoTable" );
 				});
 			});
 		}
-	 });
 	 
 	function loadNextPage() {
           $.getJSON("./api/getrandomvid", function(vid) {
