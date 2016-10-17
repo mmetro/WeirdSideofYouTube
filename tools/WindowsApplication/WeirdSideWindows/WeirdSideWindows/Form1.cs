@@ -25,8 +25,29 @@ namespace WeirdSideWindows
         private void button1_Click(object sender, EventArgs e)
         {
             var json = new System.Net.WebClient().DownloadString("http://www.weirdtube.wtf/api/getrandomvid/");
-            dynamic data = JObject.Parse(json);
-            webBrowser2.Url = "https:////www.youtube.com//watch?v=" + data.vidID;
+            // TODO: need to figure out how to link with JObject
+            //dynamic data = JObject.Parse(json);
+            //webBrowser2.Url = "https:////www.youtube.com//watch?v=" + data.vidID;
         }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+
     }
+
+    private void visitWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void visitWebsiteToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+      System.Diagnostics.Process.Start("http://www.weirdtube.wtf");
+    }
+
+    private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      MessageBox.Show("Created at RPI RCOS.\nLicensed under the MIT license.", "About Us");
+    }
+  }
 }

@@ -7,3 +7,12 @@ E:\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows
 E:\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.csproj.GenerateResource.Cache
 E:\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.exe
 E:\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.pdb
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\bin\Debug\WeirdSideWindows.exe.config
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.csprojResolveAssemblyReference.cache
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.Form1.resources
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.Properties.Resources.resources
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.csproj.GenerateResource.Cache
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\bin\Debug\WeirdSideWindows.exe
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\bin\Debug\WeirdSideWindows.pdb
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.exe
+D:\weirdsideNew\WeirdSideofYouTube\tools\WindowsApplication\WeirdSideWindows\WeirdSideWindows\obj\Debug\WeirdSideWindows.pdb
