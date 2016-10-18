@@ -19,13 +19,21 @@
     <li><a href='/login'><span>Log In</span></a></li>
     <li><a href='/register'><span>Register</span></a></li>
    <% } %>
-   <!--<li class='last'><a href='#'><span>About Us</span></a></li>-->
+   <li class='last'><a href='#'><span>About Us</span></a></li>
    <li><a href='/about'><span>About Us</span></a></li>
 </ul>
 </div>
 <body>
-<div  id='title'>
+<div  id='title' class="titlebox">
 <t1>The Weird Part of YouTube</t1>
+<br>
+<a class="gobutton" id='gobutt' onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
+    document.querySelector('#cssmenu').style.visibility = 'visible';
+    document.querySelector('#title').style.visibility = 'hidden';
+    document.querySelector('#gobutt').style.visibility = 'hidden';
+    jQuery('#youtube-player-container').tubeplayer('play');">
+        <span>Get Weird</span>
+</a>
 </div>
 <div id='theatre-box'	>
 <div  id='youtube-player-container'>
@@ -49,13 +57,7 @@
 
 </a>
 </div>
-    <a class="gobutton" id='gobutt' onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
-    document.querySelector('#cssmenu').style.visibility = 'visible';
-    document.querySelector('#title').style.visibility = 'hidden';
-    document.querySelector('#gobutt').style.visibility = 'hidden';
-    jQuery('#youtube-player-container').tubeplayer('play');">
-        <span>Get Weird</span>
-    </a>
+    
 </body>
 <script type="text/javascript">
         function playNextVid() {

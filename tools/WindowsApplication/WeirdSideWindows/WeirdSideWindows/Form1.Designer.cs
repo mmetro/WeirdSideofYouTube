@@ -69,7 +69,7 @@
             this.webBrowser3.ScriptErrorsSuppressed = true;
             this.webBrowser3.Size = new System.Drawing.Size(433, 348);
             this.webBrowser3.TabIndex = 1;
-            this.webBrowser3.Url = new System.Uri("http://www.youtube.com", System.UriKind.Absolute);
+            this.webBrowser3.Url = new System.Uri("http://r", System.UriKind.Absolute);
             // 
             // button1
             // 
