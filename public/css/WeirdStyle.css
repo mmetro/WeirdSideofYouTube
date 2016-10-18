@@ -1,6 +1,12 @@
 body {
     color: purple;
-    background-color:#778;
+    background-color:#background-color:#556;
+    background-image: linear-gradient(30deg, #223 12%, transparent 12.5%, transparent 87%, #223 87.5%, #223),
+    linear-gradient(150deg, #223 12%, transparent 12.5%, transparent 87%, #223 87.5%, #223),
+    linear-gradient(30deg, #223 12%, transparent 12.5%, transparent 87%, #223 87.5%, #223),
+    linear-gradient(150deg, #223 12%, transparent 12.5%, transparent 87%, #223 87.5%, #223),
+    linear-gradient(60deg, #778 25%, transparent 25.5%, transparent 75%, #778 75%, #778),
+    linear-gradient(60deg, #778 25%, transparent 25.5%, transparent 75%, #778 75%, #778);
     background-size:80px 140px;
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     text-align: center ;
@@ -113,10 +119,10 @@ t1:hover {
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 10px 40px 20px 40px;
-    background: rgba(10, 10, 20, .95);
+    background: rgba(10, 10, 10, .75);
     width: 80%;
     float: center;
-    box-shadow: 0px 0px 10px 10px #112;
+    box-shadow: 0px 0px 10px 10px #120 inset;
 
 /*
     color: purple;
