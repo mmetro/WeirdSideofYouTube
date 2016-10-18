@@ -119,7 +119,7 @@ t1:hover {
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 10px 40px 20px 40px;
-    background: rgba(10, 10, 10, .75);
+    background-color: rgba(50, 50, 50, 0.75);
     width: 80%;
     float: center;
     box-shadow: 0px 0px 10px 10px #120 inset;
