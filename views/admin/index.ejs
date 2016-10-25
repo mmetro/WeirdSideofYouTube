@@ -46,7 +46,7 @@
 	var currentVideoID = 1;
 
 	function loadNewTable(){
-			$.getJSON("./api/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
+			$.getJSON("./getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 				console.log(videos);
 				$.each(videos, function(key, value) {
 				$('<tr>').append(
@@ -59,7 +59,7 @@
 					$('<td>').text(value.videoID),
 					$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 					$('<td>').text("Title goes here"),
-					$('<td>').text("Views here"),
+					$('<td>').text(value.views),
 					$('<td>').text("Skip goes here"),
 					$('<td>').text("Error goes here")
 				).appendTo( "#videoTable" );
@@ -83,16 +83,6 @@
 		$('#videoTable tr').remove();
 			loadNewTable();
 	 });
-	 
-	
-	 
-	function loadNextPage() {
-          $.getJSON("./api/getrandomvid", function(vid) {
-            console.log(vid);
-            jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
-          });
-        }
-
 </script>
 
 </body>

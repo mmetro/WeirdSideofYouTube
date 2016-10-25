@@ -8,5 +8,6 @@ router.all('*', admin.needsAdmin);
 router.get('/', admin.getIndex);
 router.post('/submit', admin.postSubmitVid);
 router.post('/remove', admin.postRemoveVid);
+router.get('/getvidrange/:start/:end', admin.getVidRangeAdmin);
 
 module.exports = router;

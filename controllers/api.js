@@ -84,7 +84,7 @@ exports.getVidRange = function(req, res) {
     {
       len = 50;
     }
-    Video.find({_id: {$gte: start_id }}, {'videoID':1, 'views':1}).limit(len).lean().exec(function (err, docs) {
+    Video.find({_id: {$gte: start_id }}, {'videoID':1}).limit(len).lean().exec(function (err, docs) {
     	res.json(docs);
     });
 	});
