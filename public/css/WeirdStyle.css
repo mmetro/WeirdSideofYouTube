@@ -1,8 +1,13 @@
 body {
     color: purple;
-    background-color: #002247;
-    background-image: url(https://www.transparenttextures.com/patterns/black-thread-light.png);
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    background-color: #5B5C70;
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+        linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+        linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+        linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+        opacity: 0.75;
+background-size: 13px, 29px, 37px, 53px;
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     text-align: center ;
     margin: 0;
 }
@@ -113,7 +118,7 @@ t1:hover {
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 10px 40px 20px 40px;
-    background-color: rgba(50, 50, 50, 0.75);
+    background-color: rgba(50, 50, 50, 0.9);
     width: 80%;
     float: center;
     box-shadow: 0px 0px 10px 10px #000000 inset;
@@ -234,11 +239,11 @@ t1:hover {
     -webkit-transform: translate(0, 5px); /* depth of button press */
 }
 
-#cssmenu {
-  background: rgba(180, 180, 190, 0.5);
+#navbar {
+  background-color: rgba(180, 180, 190, 0.85);
 }
 
-#cssmenu ul {
+#navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -247,7 +252,7 @@ t1:hover {
   zoom: 1;
 }
 
-#cssmenu ul:after {
+#navbar ul:after {
   content: " ";
   display: block;
   font-size: 0;
@@ -256,21 +261,21 @@ t1:hover {
   visibility: hidden;
 }
 
-#cssmenu ul li {
+#navbar ul li {
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 
-#cssmenu.align-right ul li {
+#navbar.align-right ul li {
   float: right;
 }
 
-#cssmenu.align-center ul {
+#navbar.align-center ul {
   text-align: center;
 }
 
-#cssmenu ul li a {
+#navbar ul li a {
   color: #ffffff;
   text-decoration: none;
   display: block;
@@ -287,15 +292,15 @@ t1:hover {
   transition: color .25s;
 }
 
-#cssmenu ul li a:hover {
+#navbar ul li a:hover {
   color: #333333;
 }
 
-#cssmenu ul li a:hover:before {
+#navbar ul li a:hover:before {
   width: 100%;
 }
 
-#cssmenu ul li a:after {
+#navbar ul li a:after {
   content: "";
   display: block;
   position: absolute;
@@ -307,7 +312,7 @@ t1:hover {
   opacity: .5;
 }
 
-#cssmenu ul li a:before {
+#navbar ul li a:before {
   content: "";
   display: block;
   position: absolute;
@@ -323,48 +328,48 @@ t1:hover {
   transition: width .25s;
 }
 
-#cssmenu ul li.last > a:after,
-#cssmenu ul li:last-child > a:after {
+#navbar ul li.last > a:after,
+#navbar ul li:last-child > a:after {
   display: none;
 }
 
-#cssmenu ul li.active a {
+#navbar ul li.active a {
   color: #333333;
 }
 
-#cssmenu ul li.active a:before {
+#navbar ul li.active a:before {
   width: 100%;
 }
 
-#cssmenu.align-right li.last > a:after,
-#cssmenu.align-right li:last-child > a:after {
+#navbar.align-right li.last > a:after,
+#navbar.align-right li:last-child > a:after {
   display: block;
 }
 
-#cssmenu.align-right li:first-child a:after {
+#navbar.align-right li:first-child a:after {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  #cssmenu ul li {
+  #navbar ul li {
     float: none;
     display: block;
   }
-  #cssmenu ul li a {
+  #navbar ul li a {
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-bottom: 1px solid #fb998c;
   }
-  #cssmenu ul li.last > a,
-  #cssmenu ul li:last-child > a {
+  #navbar ul li.last > a,
+  #navbar ul li:last-child > a {
     border: 0;
   }
-  #cssmenu ul li a:after {
+  #navbar ul li a:after {
     display: none;
   }
-  #cssmenu ul li a:before {
+  #navbar ul li a:before {
     display: none;
   }
 }

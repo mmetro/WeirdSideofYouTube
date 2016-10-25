@@ -4,7 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type='text/javascript' src='./js/jQuery.tubeplayer.min.js'></script>
 <link rel="stylesheet" type="text/css" href="./css/WeirdStyle.css">
-<div id='cssmenu'>
+<div id='navbar'>
 <ul>
    <li class='active'><a href='/'><span>Home</span></a></li>
    <%if (user) { %>
@@ -28,7 +28,7 @@
 <t1>The Weird Part of YouTube</t1>
 <br>
 <a class="gobutton" id='gobutt' onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
-    document.querySelector('#cssmenu').style.visibility = 'visible';
+    document.querySelector('#navbar').style.visibility = 'visible';
     document.querySelector('#title').style.visibility = 'hidden';
     document.querySelector('#gobutt').style.visibility = 'hidden';
     jQuery('#youtube-player-container').tubeplayer('play');">
@@ -40,7 +40,7 @@
     <a class="playerbutton" onclick='
     document.querySelector("#theatre-box").style.visibility = "hidden";
 
-    document.querySelector("#cssmenu").style.visibility = "visible";
+    document.querySelector("#navbar").style.visibility = "visible";
     document.querySelector("#title").style.visibility = "visible";
     document.querySelector("#gobutt").style.visibility = "visible";
 
