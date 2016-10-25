@@ -15,7 +15,7 @@ Feel free to raise an [issue](https://github.com/ametrocavich/WeirdSideofYouTube
 
 ##Technologies Used in WSOYT   
   * HTML5
-  * Mongoose
+  * MongoDB/Mongoose
   * PassportJS
   * ExpressJS
   * NodeJS
