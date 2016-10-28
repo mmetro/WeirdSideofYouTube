@@ -46,7 +46,7 @@
 	var currentVideoID = 1;
 
 	function loadNewTable(){
-			$.getJSON("./getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
+			$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 				console.log(videos);
 				$.each(videos, function(key, value) {
 				$('<tr>').append(
