@@ -70,7 +70,7 @@
 	loadNewTable();
 	 
 	 $('#nextbutton').click(function(){	
-		$('#videoTable tr').remove();
+		$('#videoTable td').remove();
 		currentVideoID += 50;
 		loadNewTable();
 	 });
@@ -80,7 +80,7 @@
 		if(currentVideoID < 1){
 			currentVideoID = 1;
 		}
-		$('#videoTable tr').remove();
+		$('#videoTable td').remove();
 			loadNewTable();
 	 });
 </script>
