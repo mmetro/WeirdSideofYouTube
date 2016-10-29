@@ -60,8 +60,8 @@
 					$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 					$('<td>').text("Title goes here"),
 					$('<td>').text(value.views),
-					$('<td>').text("Skip goes here"),
-					$('<td>').text("Error goes here")
+					$('<td>').text(value.skips/value.views*100 + "%"),
+					$('<td>').text(value.errorCount/value.views*100 + "%")
 				).appendTo( "#videoTable" );
 				});
 			});
