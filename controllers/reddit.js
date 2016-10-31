@@ -10,8 +10,8 @@ var request = require('request');
 // handles the POST request for crawling reddit
 // adds the top video to the database
 exports.crawlReddit = function() {
-  // only get the first video
-  request('https://www.reddit.com/r/deepintoyoutube/top/.json?limit=1', function (error, response, body) {
+  // top 10 videos for the week
+  request('https://www.reddit.com/r/deepintoyoutube/top/.json?limit=10&t=week', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var reqJSON = JSON.parse(body);
       for(var i = 0; i < reqJSON.data.children.length; i++)
