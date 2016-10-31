@@ -19,7 +19,7 @@ exports.crawlReddit = function() {
         var url = reqJSON.data.children[i].data.url;
         // http://stackoverflow.com/questions/10591547/how-to-get-youtube-video-id-from-url
         // XXX This fails when a linked video includes a timestamp, ie _9UyQ5hw8jo?t=28s
-        var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
+        var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&\?]+)/)[1];
         console.log(url);
         console.log(videoid);
       }
