@@ -94,3 +94,16 @@ exports.parseYoutubeURL = function(url)
 {
   
 }
+
+// internal function for checking if a video is already in the database
+// calls the callback if it does not exist
+// callback takes the vidID
+exports.ifNotVideoExists = function(vidID, callback)
+{
+	Video.findOne({'videoID': vidID}, function (error, video){
+		if(!video)
+		{
+			callback(vidID)
+		}
+	});
+}
