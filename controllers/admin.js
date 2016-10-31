@@ -6,6 +6,7 @@ var Account = require('../models/account');
 var Video = require('../models/video');
 var Counter = require('../models/counters');
 var api = require('./api');
+var reddit = require('./reddit');
 
 //middleware for requiring admin permissions
 exports.needsAdmin = function(req, res, next) {
@@ -66,4 +67,10 @@ exports.getVidRangeAdmin = function(req, res) {
       res.json(docs);
     });
   });
+};
+
+// handles the POST request for removing a video
+exports.postCrawlReddit = function(req, res) {
+  reddit.crawlReddit();
+  res.redirect('/admin');
 };

@@ -89,3 +89,8 @@ exports.getVidRange = function(req, res) {
     });
 	});
 };
+
+exports.parseYoutubeURL = function(url) 
+{
+  
+}
