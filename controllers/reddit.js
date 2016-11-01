@@ -19,6 +19,7 @@ exports.crawlReddit = function() {
         var url = reqJSON.data.children[i].data.url;
         // http://stackoverflow.com/questions/10591547/how-to-get-youtube-video-id-from-url
         // modified to work with timestamps or a question mark
+        // this line of code is licensed under cc by-sa 3.0
         var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&\?]+)/)[1];
         api.ifNotVideoExists(videoid, function(vidID)
         {
