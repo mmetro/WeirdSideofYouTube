@@ -1,6 +1,7 @@
 body {
   background-color: #5B5C60;
 }
+
 #navbar {
   background-color: rgba(72, 61, 139, 0.8);
 }
@@ -20,7 +21,6 @@ body {
   font-size: 0;
   height: 0;
   clear: both;
-  visibility: hidden;
 }
 
 #navbar ul li {
@@ -135,3 +135,46 @@ body {
     display: none;
   }
 }
+
+.playerbutton {
+  background: #303030;
+  background-image: linear-gradient(to bottom, #707070, #333333);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000 2px;
+  text-decoration: none;
+  cursor:pointer;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+.playerbutton span {
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Tahoma', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    width: 10%;
+
+.playerbutton:hover,
+.playerbutton.hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.playerbutton:active,
+.playerbutton.active {
+  background-color: #AAA;
+  text-shadow: -1px 1px #193047;

@@ -34,27 +34,13 @@
         <span>Get Weird</span>
 </a>
 </div>
-<div id='theatre-box'	>
+
 <div  id='youtube-player-container'>
-    <a class="playerbutton" onclick='
-    document.querySelector("#theatre-box").style.visibility = "hidden";
-
-    document.querySelector("#navbar").style.visibility = "visible";
-    document.querySelector("#title").style.visibility = "visible";
-    document.querySelector("#gobutt").style.visibility = "visible";
-
-    jQuery("#youtube-player-container").tubeplayer("stop");'>
-        <span>Exit</span>
-    </a>
     <a class="playerbutton" onclick="playNextVid();">
         <span>Next</span>
     </a>
     <br>
-  </div>
-
-<a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'>
-
-</a>
+  <a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'> </a>
 </div>
     
 </body>
@@ -79,6 +65,7 @@
             });
 
         jQuery("#youtube-player-container").tubeplayer({
+  autoPlay: true,
 	width: "80%", // the width of the player
 	height: 600, // the height of the player
 	allowFullScreen: "true", // true by default, allow user to go full screen
