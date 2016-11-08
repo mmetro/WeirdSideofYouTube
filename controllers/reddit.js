@@ -6,6 +6,7 @@ var Video = require('../models/video');
 var Counter = require('../models/counters');
 var api = require('./api');
 var request = require('request');
+var schedule = require('node-schedule');
 
 // handles the POST request for crawling reddit
 // adds the top video to the database
@@ -35,3 +36,5 @@ exports.crawlReddit = function() {
     }
   })
 };
+
+var j = schedule.scheduleJob('0 0 * * *', exports.crawlReddit);
