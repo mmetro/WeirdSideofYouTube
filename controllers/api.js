@@ -11,15 +11,25 @@ var chance = new Chance();
 // vid is a string representing the youtube video ID
 exports.addVideo = function(vid, callback)
 {
-    Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
-        if(error)
-            return next(error);
-        Video.create({ 'videoID' : vid, '_id': counter.seq }, function(err, vid){
-			if(err)
-	        	console.log(err);
-	        callback(err,vid);
-		});
-    });
+	// Don't add duplicates to the database
+	Video.findOne({'videoID': vid}, function (error, vid){
+		if(!vid)
+		{
+		    Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
+		        if(error)
+		            return next(error);
+		        Video.create({ 'videoID' : vid, '_id': counter.seq }, function(err, vid){
+					if(err)
+			        	console.log(err);
+			        callback(err,vid);
+				});
+		    });
+		}
+		else
+		{
+			callback(null, vid);
+		}
+	});
 }
 
 // internal function for removing a video by youtube ID
@@ -95,15 +105,3 @@ exports.parseYoutubeURL = function(url)
   
 }
 
-// internal function for checking if a video is already in the database
-// calls the callback if it does not exist
-// callback takes the vidID
-exports.ifNotVideoExists = function(vidID, callback)
-{
-	Video.findOne({'videoID': vidID}, function (error, video){
-		if(!video)
-		{
-			callback(vidID)
-		}
-	});
-}

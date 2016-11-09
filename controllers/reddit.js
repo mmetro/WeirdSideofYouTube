@@ -22,16 +22,11 @@ exports.crawlReddit = function() {
         // modified to work with timestamps or a question mark
         // this line of code is licensed under cc by-sa 3.0
         var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&\?]+)/)[1];
-        api.ifNotVideoExists(videoid, function(vidID)
-        {
           console.log("Adding video id: " + vidID + " to database");
           api.addVideo(vidID, function(err, vid){
             if(err)
                   console.log(err);
-            else
-              console.log("Added video id: " + vid + " to database");
           });
-        });
       }
     }
   })
