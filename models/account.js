@@ -11,6 +11,6 @@ var Account = new Schema({
   admin: { type: Boolean, default: false }
 });
 
-Account.plugin(passportLocalMongoose);
+Account.plugin(passportLocalMongoose, {usernameLowerCase: true});
 
 module.exports = mongoose.model('Account', Account);
