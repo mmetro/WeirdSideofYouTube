@@ -14,6 +14,7 @@ var Video = new Schema({
 });
 
 // Improve performance and ensure no duplicates
+Video.index({_id: 1}, {unique: true});
 Video.index({videoID: 1}, {unique: true});
 
 module.exports = mongoose.model('Video', Video);
