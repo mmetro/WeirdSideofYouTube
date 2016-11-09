@@ -9,16 +9,16 @@ var chance = new Chance();
 
 // internal function for adding a video to the database
 // vid is a string representing the youtube video ID
-exports.addVideo = function(vid, callback)
+exports.addVideo = function(vidID, callback)
 {
 	// Don't add duplicates to the database
-	Video.findOne({'videoID': vid}, function (error, vid){
+	Video.findOne({'videoID': vidID}, function (error, vid){
 		if(!vid)
 		{
 		    Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
 		        if(error)
 		            return next(error);
-		        Video.create({ 'videoID' : vid, '_id': counter.seq }, function(err, vid){
+		        Video.create({ 'videoID' : vidID, '_id': counter.seq }, function(err, vid){
 					if(err)
 			        	console.log(err);
 			        callback(err,vid);
@@ -27,7 +27,7 @@ exports.addVideo = function(vid, callback)
 		}
 		else
 		{
-			callback(null, vid);
+			callback(null, vidID);
 		}
 	});
 }
