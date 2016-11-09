@@ -1,0 +1,13 @@
+#example anti-ddos nginx configuration
+limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
+limit_req zone=one burst=10;
+
+server {
+    listen 80;
+
+    server_name .weirdtube.wtf;
+
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
