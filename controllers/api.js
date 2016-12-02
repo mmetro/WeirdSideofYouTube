@@ -54,11 +54,17 @@ exports.removeVideo = function(vidID)
 
 // internal function for getting a random youtube ID.
 // the callback function expects an error as the first argument, and the video ID as the second
-exports.randomVideoID = function(callback)
+exports.randomVideoID = function(user, callback)
 {
 	Counter.findById('videos', function (err, count) {
 		var rand = chance.integer({min: 1, max: (count.seq-1)});;
 		Video.findByIdAndUpdate(rand, {$inc: { views: 1} }, function (err, myDocument) {
+			if (user){
+		    	VideoHistory.create({ 'username' : user.username, 'videoID': myDocument.videoID }, function(err, vid){
+					if(err)
+			        	console.log(err);
+				});
+	      	}
 			callback(err, myDocument.videoID);
 		});
 	}); 
@@ -67,14 +73,8 @@ exports.randomVideoID = function(callback)
 // Handler for a GET request for a random video.
 // sends the client a JSON object with the youtube video ID
 exports.getRandomVid = function(req, res) {
-	exports.randomVideoID(function(err, vidID)
+	exports.randomVideoID(req.user, function(err, vidID)
 	{
-		if (req.user){
-	    	VideoHistory.create({ 'username' : req.user.username, 'videoID': vidID }, function(err, vid){
-				if(err)
-		        	console.log(err);
-			});
-      	}
 		res.json({'vidID' : vidID});
 	});
 };
