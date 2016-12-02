@@ -107,6 +107,23 @@ exports.getVidRange = function(req, res) {
 	});
 };
 
+
+// handler for a GET request for a user's video history
+// sends a JSON object containing the lsat 50 videos watched
+exports.getVideoHistory = function(req, res) {
+  if(req.user)
+  {
+  	VideoHistory.find({username: req.user.username}, {'_id': 0, 'videoID':1, 'time':1}).sort({time: -1 }).limit(50).exec(function (error, history){
+  		res.json(history);
+  	});
+  }
+  else
+  {
+  	res.status(401).send('User is not logged in');
+  }
+};
+
+
 exports.parseYoutubeURL = function(url) 
 {
   
