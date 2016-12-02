@@ -4,6 +4,7 @@
 var mongoose = require('mongoose');
 var Video = require('../models/video');
 var Counter = require('../models/counters');
+var VideoHistory = require('../models/videohistory');
 var Chance = require('chance');
 var chance = new Chance();
 
@@ -68,6 +69,12 @@ exports.randomVideoID = function(callback)
 exports.getRandomVid = function(req, res) {
 	exports.randomVideoID(function(err, vidID)
 	{
+		if (req.user){
+	    	VideoHistory.create({ 'username' : req.user.username, 'videoID': vidID }, function(err, vid){
+				if(err)
+		        	console.log(err);
+			});
+      	}
 		res.json({'vidID' : vidID});
 	});
 };

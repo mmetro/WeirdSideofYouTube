@@ -12,6 +12,6 @@ var VideoHistory = new Schema({
 	capped: {size: 10000000}
 });
 
-VideoHistory.index({username: 1, time: 1});
+VideoHistory.index({username: 1, time: -1});
 
 module.exports = mongoose.model('VideoHistory', VideoHistory);
