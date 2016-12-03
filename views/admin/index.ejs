@@ -54,24 +54,23 @@
 
 	function loadNewTable(){
 			$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
-				console.log(videos);
 				$.each(videos, function(key, value) {
+					$('<tr id="' + value.videoID + '">').append(
+						$('<td>').append(
+							$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
+								$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
+								$('<input>').attr({"type": "submit", "value": "Delete Video"})
+							)
+						),
+						$('<td>').text(value.videoID),
+						$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+						$('<td>').attr("id", "title"),
+						$('<td>').text(value.views),
+						$('<td>').text(value.skips/value.views*100 + "%"),
+						$('<td>').text(value.errorCount/value.views*100 + "%")
+					).appendTo( "#videoTable" );
 					$.getJSON("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + value.videoID + "&key=" + youtubeAPIKey, function(data) {
-						console.log(data)
-						$('<tr>').append(
-							$('<td>').append(
-								$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-									$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
-									$('<input>').attr({"type": "submit", "value": "Delete Video"})
-								)
-							),
-							$('<td>').text(value.videoID),
-							$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-							$('<td>').attr("id", "title").text(data.items[0].snippet.title),
-							$('<td>').text(value.views),
-							$('<td>').text(value.skips/value.views*100 + "%"),
-							$('<td>').text(value.errorCount/value.views*100 + "%")
-						).appendTo( "#videoTable" );
+						$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
 					});
 				});
 			});

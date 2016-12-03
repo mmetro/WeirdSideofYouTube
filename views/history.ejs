@@ -23,11 +23,10 @@
 
 	function loadNewTable(){
 			$.getJSON("/api/gethistory/", function(videos) {
-				console.log(videos);
 				$.each(videos, function(key, value) {
 					$('<tr id="' + value.videoID + '">').append(
 						$('<td>').text(value.videoID),
-						$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+						$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 						$('<td>').attr("id", "title"),
 						$('<td>').text(value.time)
 					).appendTo( "#videoTable" );
