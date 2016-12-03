@@ -1,4 +1,8 @@
-#The Weird Side Of YouTube: [![GitHubStats](https://img.shields.io/badge/github-stats-brightgreen.svg)](http://githubstats.com/ametrocavich/WeirdSideofYouTube)   
+#The Weird Side Of YouTube: [![GitHubStats](https://img.shields.io/badge/github-stats-brightgreen.svg)](http://githubstats.com/mmetro/WeirdSideofYouTube)  
+
+
+#[Documentation](https://github.com/mmetro/WeirdSideofYouTube/wiki)
+
 
 Why?
 ----------
