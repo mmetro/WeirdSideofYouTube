@@ -54,12 +54,13 @@
 <script type="text/javascript">
 	var currentVideoID = 1;
 	var numVideos = 0;
+	var videosPerPage = 50;
 	// XXX TODO make some config file where the user can specify their key
 	// XXX Remove our API key from the repo, and possible switch to OAuth
 	var youtubeAPIKey = "AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8";
 
 	function loadNewTable(){
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+50 <= numVideos) ? currentVideoID+50 : numVideos).toString() + " of " + numVideos.toString());
+		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
 		$('#videoTable tr').remove(".videoRow");
 		$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 			$.each(videos, function(key, value) {
@@ -88,20 +89,20 @@
 
 	$.getJSON("/api/getnumvids/", function(numVids) {
 		numVideos = numVids.numVids;
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+50 <= numVideos) ? currentVideoID+50 : numVideos).toString() + " of " + numVideos.toString());
+		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
 	});
 	 
 	 $('#nextButtonTop, #nextButtonBottom').click(function(){	
-		currentVideoID += 50;
+		currentVideoID += videosPerPage;
 		if(currentVideoID > numVideos)
 		{
-			currentVideoID -= 50;
+			currentVideoID -= videosPerPage;
 		}
 		loadNewTable();
 	 });
 	 
 	 $('#previousButtonTop, #previousButtonBottom').click(function(){
-		currentVideoID -= 50;
+		currentVideoID -= videosPerPage;
 		if(currentVideoID < 1){
 			currentVideoID = 1;
 		}
