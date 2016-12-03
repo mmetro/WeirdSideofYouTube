@@ -28,7 +28,7 @@
 					$('<tr id="' + value.videoID + '">').append(
 						$('<td>').text(value.videoID),
 						$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-						$('<td>').attr("id", "title").text("Loading..."),
+						$('<td>').attr("id", "title"),
 						$('<td>').text(value.time)
 					).appendTo( "#videoTable" );
 					$.getJSON("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + value.videoID + "&key=" + youtubeAPIKey, function(data) {
