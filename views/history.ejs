@@ -14,8 +14,6 @@
  	</tr>
 </table>
 
-<br />
-
 <script type="text/javascript">
 	var currentVideoID = 1;
 	// XXX TODO make some config file where the user can specify their key
@@ -26,14 +24,14 @@
 			$.getJSON("/api/gethistory/", function(videos) {
 				console.log(videos);
 				$.each(videos, function(key, value) {
+					$('<tr id="' + value.videoID + '">').append(
+						$('<td>').text(value.videoID),
+						$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+						$('<td>').attr("id", "title").text("Loading..."),
+						$('<td>').text(value.time)
+					).appendTo( "#videoTable" );
 					$.getJSON("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + value.videoID + "&key=" + youtubeAPIKey, function(data) {
-						console.log(data)
-						$('<tr>').append(
-							$('<td>').text(value.videoID),
-							$('<td>').html('<img src="http://i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-							$('<td>').attr("id", "title").text(data.items[0].snippet.title),
-							$('<td>').text(value.time)
-						).appendTo( "#videoTable" );
+						$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
 					});
 				});
 			});

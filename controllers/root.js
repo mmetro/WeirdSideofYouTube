@@ -55,7 +55,7 @@ exports.getAbout = function(req, res) {
     res.render('about', { });
 };
 
-// handler for the GET request for the about page
+// handler for the GET request for the history page
 exports.getHistory = function(req, res) {
   if(req.user)
   {

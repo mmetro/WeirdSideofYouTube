@@ -1,4 +1,3 @@
-// sample model
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -12,6 +11,7 @@ var VideoHistory = new Schema({
 	capped: {size: 10000000}
 });
 
+// allow fast queries for a user's most recent videos
 VideoHistory.index({username: 1, time: -1});
 
 module.exports = mongoose.model('VideoHistory', VideoHistory);

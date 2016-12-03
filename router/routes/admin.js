@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var admin = require('../../controllers/admin');
 
+// any url at /admin/ requires an admin user
 router.all('*', admin.needsAdmin);
 router.get('/', admin.getIndex);
 router.post('/submit', admin.postSubmitVid);

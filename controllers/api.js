@@ -89,21 +89,21 @@ exports.getVidRange = function(req, res) {
 		var smallestID = 1;
 		var largestID = counter.seq;
 		if(start_id < smallestID)
-    {
-      start_id = smallestID;
-    }
-    if(end_id < start_id)
-    {
-      end_id = start_id;
-    }
-    var len = end_id - start_id + 1;
-    if(len > 50)
-    {
-      len = 50;
-    }
-    Video.find({_id: {$gte: start_id }}, {'videoID':1}).limit(len).lean().exec(function (err, docs) {
-    	res.json(docs);
-    });
+	    {
+	      start_id = smallestID;
+	    }
+	    if(end_id < start_id)
+	    {
+	      end_id = start_id;
+	    }
+	    var len = end_id - start_id + 1;
+	    if(len > 50)
+	    {
+	      len = 50;
+	    }
+	    Video.find({_id: {$gte: start_id }}, {'videoID':1}).limit(len).lean().exec(function (err, docs) {
+	    	res.json(docs);
+	    });
 	});
 };
 
