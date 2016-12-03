@@ -123,6 +123,13 @@ exports.getVideoHistory = function(req, res) {
   }
 };
 
+// handler for a GET request for the number of videos in the database
+exports.getNumVids = function(req, res) {
+  Counter.findById('videos', function (err, count) {
+  	res.json({'numVids' : count.seq});
+  });
+};
+
 
 exports.parseYoutubeURL = function(url) 
 {
