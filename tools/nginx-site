@@ -12,6 +12,7 @@ server {
     server_name .weirdtube.wtf;
     ssl_certificate /etc/nginx/ssl/weirdtube.crt;
     ssl_certificate_key /etc/nginx/ssl/weirdtube.key;
+    ssl_ciphers HIGH:!aNULL:!MD5:!DH;
     ssl_session_cache shared:SSL:20m;
     ssl_session_timeout 180m;
     add_header Strict-Transport-Security "max-age=31536000" always;
