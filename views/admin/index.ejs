@@ -25,6 +25,10 @@
 	<input type="submit" value="Crawl /r/DeepIntoYoutube" class="pure-button"/>
 	</span>
 </form>
+<br>
+
+<input id="previousButtonTop" type="button" value="Previous Page">
+<input id="nextButtonTop" type="button" value="Next Page">
 
 <table id="videoTable" cellspacing="5" class="pure-table">
 	<tr id="tableheader">
@@ -41,8 +45,8 @@
 
 <br />
 
-<input id="previousbutton" type="button" value="Previous">
-<input id="nextbutton" type="button" value="Next">
+<input id="previousButtonBottom" type="button" value="Previous Page">
+<input id="nextButtonBottom" type="button" value="Next Page">
 
 <br />
 
@@ -79,12 +83,12 @@
 
 	loadNewTable();
 	 
-	 $('#nextbutton').click(function(){	
+	 $('#nextButtonTop, #nextButtonBottom').click(function(){	
 		currentVideoID += 50;
 		loadNewTable();
 	 });
 	 
-	 $('#previousbutton').click(function(){
+	 $('#previousButtonTop, #previousButtonBottom').click(function(){
 		currentVideoID -= 50;
 		if(currentVideoID < 1){
 			currentVideoID = 1;
