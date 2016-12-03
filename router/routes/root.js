@@ -10,5 +10,6 @@ router.get('/login', root.getLogin);
 router.post('/login', root.postLogin);
 router.get('/logout', root.getLogout);
 router.get('/about', root.getAbout);
+router.get('/history', root.getHistory);
 
 module.exports = router;
