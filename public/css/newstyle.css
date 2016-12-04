@@ -149,6 +149,18 @@ body {
   color: #ffffff;
 }
 
+#textbody {
+  text-align: center;
+  font-variant: normal;
+  font size: 10px
+  font-weight: lighter
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'calibri';
+  color: #ffffff;
+  text-align: center;
+}
+
 #youtube-player-container {
     z-index: 35;
     margin: auto;
@@ -207,4 +219,9 @@ body {
 .playerbutton.active {
   background-color: #AAA;
   text-shadow: -1px 1px #193047;
+}
+
+#rpi_logo {
+  margin-left: auto;
+  margin-right: auto;
 }
