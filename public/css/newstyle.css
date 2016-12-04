@@ -1,9 +1,11 @@
 body {
-  background-color: #5B5C60;
+  background-color: rgb(25, 25, 25);
+  margin: 0px;
 }
 
 #navbar {
-  background-color: rgba(72, 61, 139, 0.8);
+  background-color: rgba(74, 171, 5, 0.8);
+  text-align: center;
 }
 
 #navbar ul {
@@ -15,7 +17,7 @@ body {
   zoom: 1;
 }
 
-#navbar ul:after {
+#navbar ul: after {
   content: " ";
   display: block;
   font-size: 0;
@@ -29,19 +31,15 @@ body {
   margin: 0;
 }
 
-#navbar.align-right ul li {
-  float: right;
-}
-
-#navbar.align-center ul {
-  text-align: center;
-}
 
 #navbar ul li a {
   color: #ffffff;
+  margin-right: auto;
+  margin-left: auto;
   text-decoration: none;
+  text-align: center;
   display: block;
-  padding: 15px 25px;
+  padding: 15px 15px;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
@@ -116,7 +114,8 @@ body {
   #navbar ul li {
     float: none;
     display: block;
-  }
+}
+
   #navbar ul li a {
     width: 100%;
     -moz-box-sizing: border-box;
@@ -124,8 +123,9 @@ body {
     box-sizing: border-box;
     border-bottom: 1px solid #fb998c;
   }
-  #navbar ul li.last > a,
-  #navbar ul li:last-child > a {
+  
+  #navbar ul li.last > a
+  #navbar ul li: last-child > a {
     border: 0;
   }
   #navbar ul li a:after {
@@ -136,8 +136,29 @@ body {
   }
 }
 
+#title {
+  text-align: center;
+  font-family: 'Haettenschweiler';
+  font-size: 30px;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: lighter;
+  line-height: 20px;
+  margin-left: auto
+  margin-right: auto;
+  color: #ffffff;
+}
+
+#youtube-player-container {
+    z-index: 35;
+    margin: auto;
+    padding-top: 0%;
+    text-align: center;
+    width: 80%;
+}
+
 .playerbutton {
-  background: #303030;
+  background: rgb(203, 242, 237);
   background-image: linear-gradient(to bottom, #707070, #333333);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -145,27 +166,35 @@ body {
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 10px 10px 10px;
   border: solid #000 2px;
   text-decoration: none;
-  cursor:pointer;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
-}
-.playerbutton span {
-    display: inline-block;
-    padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  text-align: center;
+  width: 100px;
 
-    color: #fff;
-    text-transform: uppercase;
-    font-family: 'Tahoma', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    width: 10%;
+}
+
+#playDiv {
+  text-align: center;
+}
+
+.playerbutton span {
+  display: inline;
+  padding: 35px 40px 20px 40px;  
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 32px;
+}
 
 .playerbutton:hover,
 .playerbutton.hover {
-  background: #3cb0fd;
+  background: rgb(203, 242, 237);
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
@@ -178,3 +207,4 @@ body {
 .playerbutton.active {
   background-color: #AAA;
   text-shadow: -1px 1px #193047;
+}
