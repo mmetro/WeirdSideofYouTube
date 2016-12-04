@@ -28,6 +28,18 @@
     <li class='last'><a href='#'><span>About Us</span></a></li>
    </ul>
 </div>
+<body>
+<div  id='title' class="titlebox">
+<t1>The Weird Part of YouTube</t1>
+<br>
+<a class="gobutton" id='gobutt' onclick="document.querySelector('#theatre-box').style.visibility = 'visible';
+    document.querySelector('#cssmenu').style.visibility = 'visible';
+    document.querySelector('#title').style.visibility = 'hidden';
+    document.querySelector('#gobutt').style.visibility = 'hidden';
+    jQuery('#youtube-player-container').tubeplayer('play');">
+        <span>Get Weird</span>
+</a>
+</div>
 
 <div id='title'>
    <h1>Weird Side of YouTube</h1>
@@ -51,18 +63,6 @@
             jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
           });
         }
-        $(document).keydown(function(e) {
-                switch(e.which) {
-                    case 39: // right (fast-forward)
-                      playNextVid();
-                    break;
-                    case 32: // right (fast-forward)
-                      playNextVid();
-                    break;
-                    default: return; // exit this handler for other keys
-                }
-                e.preventDefault(); // prevent the default action (scroll / move caret)
-            });
 
         jQuery("#youtube-player-container").tubeplayer({
   autoPlay: true,

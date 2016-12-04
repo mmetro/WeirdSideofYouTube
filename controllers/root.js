@@ -7,7 +7,7 @@ var api = require('./api');
 
 // handler for a GET request for the index
 exports.getIndex = function(req, res) {
-  api.randomVideoID(function(err, vidID)
+  api.randomVideoID(req.user, function(err, vidID)
   {
     res.render('index', { videoID : vidID, user: req.user });
   });
@@ -54,3 +54,16 @@ exports.getLogout = function(req, res) {
 exports.getAbout = function(req, res) {
     res.render('about', { });
 };
+
+// handler for the GET request for the history page
+exports.getHistory = function(req, res) {
+  if(req.user)
+  {
+    res.render('history', { });
+  }
+  else
+  {
+    res.redirect('/');
+  }
+};
+

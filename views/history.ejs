@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Video History</title>
+<link rel="stylesheet" href="https://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+<body>
+
+<table id="videoTable" cellspacing="5" class="pure-table">
+	<tr id="tableheader">
+	   <th>ID</th>
+	   <th>Thumbnail</th>
+	   <th>Title</th>
+	   <th>Date</th>
+ 	</tr>
+</table>
+
+<script type="text/javascript">
+	var currentVideoID = 1;
+	// XXX TODO make some config file where the user can specify their key
+	// XXX Remove our API key from the repo, and possible switch to OAuth
+	var youtubeAPIKey = "AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8";
+
+	function loadNewTable(){
+		$.getJSON("/api/gethistory/", function(videos) {
+			$.each(videos, function(key, value) {
+				$('<tr id="' + value.videoID + '" class="videoRow">').append(
+					$('<td>').text(value.videoID),
+					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+					$('<td>').attr("id", "title"),
+					$('<td>').text(value.time)
+				).appendTo( "#videoTable" );
+				$.getJSON("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + value.videoID + "&key=" + youtubeAPIKey, function(data) {
+					$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
+				});
+			});
+		});
+	}	
+
+	loadNewTable();
+</script>
+
+</body>
+</html>
