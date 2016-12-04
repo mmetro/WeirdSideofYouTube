@@ -1,14 +1,13 @@
 body {
     color: purple;
-    background-color:#556;
-    background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-    linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
-    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
-    background-size:80px 140px;
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    background-color: #5B5C60;
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+        linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+        linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+        linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+        opacity: 0.75;
+background-size: 40px, 29px, 37px, 53px;
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     text-align: center ;
     margin: 0;
 }
@@ -20,7 +19,7 @@ body {
 }
 
 
-t1{ /*title font*/
+.t1{ /*title font*/
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
@@ -40,7 +39,7 @@ t1{ /*title font*/
 
 }
 
-t1:hover {
+.t1: hover {
   text-shadow: -3px 0 0 rgb(217,31,38) , -6px 0 0 rgb(226,91,14) , -9px 0 0 rgb(245,221,8) , -12px 0 0 rgb(5,148,68) , -15px 0 0 rgb(2,135,206) , -18px 0 0 rgb(4,77,145) , -21px 0 0 rgb(42,21,113) ;
   -webkit-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -92,7 +91,7 @@ t1:hover {
 
     color: #fff;
     text-transform: uppercase;
-    font-family: 'Book Antiqua', cursive;
+    font-family: 'Tahoma', sans-serif;
     font-weight: 700;
     font-size: 32px;
     width: 10%;
@@ -119,10 +118,10 @@ t1:hover {
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 10px 40px 20px 40px;
-    background: rgba(10, 10, 20, .95);
+    background-color: rgba(50, 50, 50, 0.9);
     width: 80%;
     float: center;
-    box-shadow: 0px 0px 10px 10px #112;
+    box-shadow: 0px 0px 10px 10px #000000 inset;
 
 /*
     color: purple;
@@ -240,11 +239,11 @@ t1:hover {
     -webkit-transform: translate(0, 5px); /* depth of button press */
 }
 
-#cssmenu {
-  background: rgba(180, 180, 190, 0.5);
+#navbar {
+  background-color: rgba(72, 61, 139, 0.8);
 }
 
-#cssmenu ul {
+#navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -253,7 +252,7 @@ t1:hover {
   zoom: 1;
 }
 
-#cssmenu ul:after {
+#navbar ul:after {
   content: " ";
   display: block;
   font-size: 0;
@@ -262,27 +261,27 @@ t1:hover {
   visibility: hidden;
 }
 
-#cssmenu ul li {
+#navbar ul li {
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 
-#cssmenu.align-right ul li {
+#navbar.align-right ul li {
   float: right;
 }
 
-#cssmenu.align-center ul {
+#navbar.align-center ul {
   text-align: center;
 }
 
-#cssmenu ul li a {
+#navbar ul li a {
   color: #ffffff;
   text-decoration: none;
   display: block;
   padding: 15px 25px;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
   position: relative;
@@ -293,15 +292,15 @@ t1:hover {
   transition: color .25s;
 }
 
-#cssmenu ul li a:hover {
+#navbar ul li a:hover {
   color: #333333;
 }
 
-#cssmenu ul li a:hover:before {
+#navbar ul li a:hover:before {
   width: 100%;
 }
 
-#cssmenu ul li a:after {
+#navbar ul li a:after {
   content: "";
   display: block;
   position: absolute;
@@ -313,7 +312,7 @@ t1:hover {
   opacity: .5;
 }
 
-#cssmenu ul li a:before {
+#navbar ul li a:before {
   content: "";
   display: block;
   position: absolute;
@@ -329,48 +328,48 @@ t1:hover {
   transition: width .25s;
 }
 
-#cssmenu ul li.last > a:after,
-#cssmenu ul li:last-child > a:after {
+#navbar ul li.last > a:after,
+#navbar ul li:last-child > a:after {
   display: none;
 }
 
-#cssmenu ul li.active a {
+#navbar ul li.active a {
   color: #333333;
 }
 
-#cssmenu ul li.active a:before {
+#navbar ul li.active a:before {
   width: 100%;
 }
 
-#cssmenu.align-right li.last > a:after,
-#cssmenu.align-right li:last-child > a:after {
+#navbar.align-right li.last > a:after,
+#navbar.align-right li:last-child > a:after {
   display: block;
 }
 
-#cssmenu.align-right li:first-child a:after {
+#navbar.align-right li:first-child a:after {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  #cssmenu ul li {
+  #navbar ul li {
     float: none;
     display: block;
   }
-  #cssmenu ul li a {
+  #navbar ul li a {
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-bottom: 1px solid #fb998c;
   }
-  #cssmenu ul li.last > a,
-  #cssmenu ul li:last-child > a {
+  #navbar ul li.last > a,
+  #navbar ul li:last-child > a {
     border: 0;
   }
-  #cssmenu ul li a:after {
+  #navbar ul li a:after {
     display: none;
   }
-  #cssmenu ul li a:before {
+  #navbar ul li a:before {
     display: none;
   }
 }
