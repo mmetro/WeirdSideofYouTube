@@ -31,6 +31,24 @@ body {
   margin: 0;
 }
 
+#navbar ul li p {
+  color: #E5C6E1;
+  margin-right: auto;
+  margin-left: auto;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  padding: 0px 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  position: relative;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
 
 #navbar ul li a {
   color: #ffffff;
