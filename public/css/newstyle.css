@@ -1,6 +1,10 @@
 body {
   background-color: rgb(25, 25, 25);
   margin: 0px;
+  color: #E5C6E1;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 #navbar {

@@ -21,7 +21,7 @@ exports.needsAdmin = function(req, res, next) {
 
 // render the admin panel index
 exports.getIndex = function(req, res) {
-    res.render('admin/index');
+    res.render('admin/index', { user : req.user });
 };
 
 // handles the POST request for submitting a video

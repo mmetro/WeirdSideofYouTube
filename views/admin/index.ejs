@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<head>
+ 	<link rel="stylesheet" type="text/css" href="/css/newstyle.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+</head>
 <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
 <body>
+
+<div id='navbar'>
+  <ul>
+    <li><a href='/'><span>Home</span></a></li>
+    <li><a href='#'><span>About Us</span></a></li>
+    <%if (user) { %>
+      <%if (user.admin) { %>
+        <li class='active'><a href='/admin'><span>Admin Panel</span></a></li>
+      <% } %>
+      <li><a href='/history'><span>View History</span></a></li>
+      <li><a href="/logout"> Logout </a></li>
+      <li><p> Username: <%= user.username %> </p></li>
+    <% } %>
+    <%if (!user) { %>
+      <li><a href='/login'><span>Log In</span></a></li>
+      <li><a href='/register'><span>Register</span></a></li>
+    <% } %>
+   </ul>
+</div>
 
 <form action="/admin/submit" method="post" class="pure-form">
 	<span>
