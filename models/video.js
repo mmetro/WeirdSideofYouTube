@@ -10,7 +10,8 @@ var Video = new Schema({
   errorCount: { type: Number, default: 0 },
   skips: { type: Number, default: 0 },
   time: {type: Date, default: Date.now},
-  submittedUser: {type: String, default: '' }
+  submittedUser: {type: String, default: '' },
+  title: {type: String, default: '' }
 });
 
 // Improve performance and ensure no duplicates
