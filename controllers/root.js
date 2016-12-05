@@ -52,14 +52,14 @@ exports.getLogout = function(req, res) {
 
 // handler for the GET request for the about page
 exports.getAbout = function(req, res) {
-    res.render('about', { });
+    res.render('about', { user : req.user });
 };
 
 // handler for the GET request for the history page
 exports.getHistory = function(req, res) {
   if(req.user)
   {
-    res.render('history', { });
+    res.render('history', { user : req.user });
   }
   else
   {
