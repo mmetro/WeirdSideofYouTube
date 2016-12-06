@@ -2,6 +2,7 @@
 
 
 #[Documentation](https://github.com/mmetro/WeirdSideofYouTube/wiki)
+#[How To Use](https://github.com/mmetro/WeirdSideofYouTube/wiki/How-to-use-WSOYT)
 
 
 Why?
