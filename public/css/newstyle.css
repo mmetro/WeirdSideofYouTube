@@ -7,6 +7,13 @@ body {
   font-size: 12px;
 }
 
+input {
+  color: #000000;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
 #navbar {
   background-color: rgba(74, 171, 5, 0.8);
   text-align: center;
