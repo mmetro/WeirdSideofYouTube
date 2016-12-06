@@ -18,11 +18,12 @@ Please contribute if you see an error or something that looks like it needs impr
 Feel free to raise an [issue](https://github.com/ametrocavich/WeirdSideofYouTube/issues) or send us a pull request to help improve the site. Contributions of all kinds, including additions, improvements, additions, translations, documentation updates, and non-coding contriubtions are welcome to join our community.      
 
 ##Technologies Used in WSOYT   
-  * HTML5
+  * HTML5/CSS
   * MongoDB/Mongoose
   * PassportJS
   * ExpressJS
   * NodeJS
+  * JQuery
 
 ###Check out our live demo:   
 
