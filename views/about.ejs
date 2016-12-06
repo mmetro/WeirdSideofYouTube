@@ -2,12 +2,22 @@
 <html>
 <link rel="stylesheet" type="text/css" href="./css/newstyle.css">
 <div id='navbar'>
-	<ul>
-		<li class='active'><a href='/'><span>Home</span></a></li>
-	    <li><a href='/login'><span>Log In</span></a></li>
-	    <li><a href='/register'><span>Register</span></a></li>
-	    <li><a href='/about'><span>About Us</span></a></li>
-	</ul>
+  <ul>
+    <li><a href='/'><span>Home</span></a></li>
+    <li class='active'><a href='/about'><span>About Us</span></a></li>
+    <%if (user) { %>
+      <%if (user.admin) { %>
+        <li><a href='/admin'><span>Admin Panel</span></a></li>
+      <% } %>
+      <li><a href='/history'><span>View History</span></a></li>
+      <li><a href="/logout"> Logout </a></li>
+      <li><p> Username: <%= user.username %> </p></li>
+    <% } %>
+    <%if (!user) { %>
+      <li><a href='/login'><span>Log In</span></a></li>
+      <li><a href='/register'><span>Register</span></a></li>
+    <% } %>
+   </ul>
 </div>
 
 <body>
