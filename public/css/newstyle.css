@@ -167,26 +167,26 @@ input {
 
 #title {
   text-align: center;
-  font-family: 'Haettenschweiler';
+  font-family: 'Helvetica';
   font-size: 30px;
   font-style: normal;
   font-variant: small-caps;
-  font-weight: lighter;
+  font-weight: 100;
   line-height: 20px;
   margin-left: auto
   margin-right: auto;
-  color: #ffffff;
+  color: rgb(240, 240, 240);
 }
 
 #textbody {
   text-align: center;
   font-variant: normal;
-  font size: 10px;
+  font-size: 16px;
   font-weight: lighter;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 350px;
+  margin-right: 350px;
   font-family: 'calibri';
-  color: #ffffff;
+  color: rgb(240, 240, 240);
 }
 
 #youtube-player-container {
@@ -195,6 +195,10 @@ input {
     padding-top: 0%;
     text-align: center;
     width: 80%;
+}
+
+#playDiv {
+  text-align: center;
 }
 
 .playerbutton {
@@ -215,11 +219,6 @@ input {
   width: auto;
   text-align: center;
   width: 100px;
-
-}
-
-#playDiv {
-  text-align: center;
 }
 
 .playerbutton span {
