@@ -36,20 +36,23 @@ exports.addVideo = function(vidID, callback)
 // internal function for removing a video by youtube ID
 exports.removeVideo = function(vidID)
 {
-	Video.findOne({'videoID': vidID}, function (error, video){
-		var __id = video._id;
-		Counter.findById('videos', function(error, counter)
-		{
-			Video.findOne({'_id': counter.seq}, function (error, _video){
-				video.remove();
-				Video.create({ 'videoID' : _video.videoID, '_id': __id}, function(err, vid){
-					_video.remove();
-					counter.seq = counter.seq - 1;
-					counter.save();
-				});
-			});	
+	if(vidID)
+	{
+		Video.findOne({'videoID': vidID}, function (error, video){
+			var __id = video._id;
+			Counter.findById('videos', function(error, counter)
+			{
+				Video.findOne({'_id': counter.seq}, function (error, _video){
+					video.remove();
+					Video.create({ 'videoID' : _video.videoID, '_id': __id}, function(err, vid){
+						_video.remove();
+						counter.seq = counter.seq - 1;
+						counter.save();
+					});
+				});	
+			});
 		});
-	});
+	}
 }
 
 // internal function for getting a random youtube ID.

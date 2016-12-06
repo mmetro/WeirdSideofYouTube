@@ -89,7 +89,7 @@
 				$('<tr id="' + value.videoID + '" class="videoRow">').append(
 					$('<td>').append(
 						$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-							$('<input>').attr({"type": "hidden", "name": "videoID", "value": "value.videoID"}),
+							$('<input>').attr({"type": "hidden", "name": "videoID", "value": value.videoID}),
 							$('<input>').attr({"type": "submit", "value": "Delete Video"})
 						)
 					),
