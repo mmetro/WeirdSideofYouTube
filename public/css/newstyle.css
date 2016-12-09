@@ -199,6 +199,9 @@ input {
   padding: 5px 5px 10px 5px;
 }
   
+#aboutstyle {
+  opacity: 0.75;
+}
 
 #youtube-player-container {
     z-index: -1;
