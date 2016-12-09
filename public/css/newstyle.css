@@ -1,7 +1,6 @@
 body {
   background-color: rgb(25, 25, 25);
   margin: 0px;
-  color: #E5C6E1;
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   font-size: 12px;
@@ -168,12 +167,12 @@ input {
 #title {
   text-align: center;
   font-family: 'Helvetica';
-  font-size: 30px;
+  font-size: 32px;
   font-style: normal;
   font-variant: small-caps;
-  font-weight: 100;
+  font-weight: 100px;
   line-height: 20px;
-  margin-left: auto
+  margin-left: auto;
   margin-right: auto;
   color: rgb(240, 240, 240);
 }
@@ -183,15 +182,22 @@ input {
   font-variant: normal;
   font-size: 16px;
   font-weight: lighter;
-  width: 900px;
-  margin-left: 50px;
-  margin-right: 50px;
+  width: 85%;
   font-family: 'calibri';
   color: rgb(240, 240, 240);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(25, 25, 25);
+  box-shadow: 0px 0px 100px rgb(50, 50, 50);
 }
 
-.textbox{
-  background-color: rgb(35, 35, 35);
+#rpi_logo {
+  text-align: center;
+  max-width: 400%;
+  max-height: 400%;
+  width: auto;
+  height: auto;
+  margin: auto;
 }
 
 #youtube-player-container {
@@ -253,7 +259,3 @@ input {
   text-shadow: -1px 1px #193047;
 }
 
-#rpi_logo {
-  margin-left: auto;
-  margin-right: auto;
-}
