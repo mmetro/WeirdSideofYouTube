@@ -196,16 +196,17 @@ input {
 }
 
 #textbox {
-  background-color: rgb(40, 40, 40, 0.9);
-  box-shadow: 0px 0px 80px #35383b;
+  background-color: rgba(40, 45, 45, 0.9);
+  box-shadow: 0px 0px 100px #35383b;
   border: 1px hidden;
   width: 75%;
   margin: auto;
+  padding: 5px 5px 5px 5px;
 }
   
 
 #youtube-player-container {
-    z-index: 35;
+    z-index: -1;
     margin: auto;
     padding-top: 0%;
     text-align: center;
