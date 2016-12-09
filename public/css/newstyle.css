@@ -4,6 +4,13 @@ body {
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   font-size: 12px;
+  z-index: -2;
+}
+
+#bg_image {
+  background: transparent url(https://upload.wikimedia.org/wikipedia/en/a/a9/RPI_Engineers.svg);
+  opacity: 0.6;
+  z-index: -1;
 }
 
 input {
@@ -179,16 +186,23 @@ input {
 
 #textbody {
   text-align: center;
-  font-variant: normal;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: lighter;
-  width: 85%;
+  width: 75%;
   font-family: 'calibri';
   color: rgb(240, 240, 240);
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(50, 50, 50);
 }
+
+#textbox {
+  background-color: rgb(40, 40, 40, 0.9);
+  box-shadow: 0px 0px 80px #35383b;
+  border: 1px hidden;
+  width: 75%;
+  margin: auto;
+}
+  
 
 #youtube-player-container {
     z-index: 35;
@@ -199,6 +213,7 @@ input {
 }
 
 #playDiv {
+  position: relative;
   text-align: center;
 }
 
