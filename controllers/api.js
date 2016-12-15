@@ -63,12 +63,15 @@ exports.randomVideoID = function(user, callback)
 		var rand = chance.integer({min: 1, max: (count.seq-1)});;
 		Video.findByIdAndUpdate(rand, {$inc: { views: 1} }, function (err, myDocument) {
 			if (user){
-		    	VideoHistory.create({ 'username' : user.username, 'videoID': myDocument.videoID }, function(err, vid){
+	    	VideoHistory.create({ 'username' : user.username, 'videoID': myDocument.videoID }, function(err, vid){
 					if(err)
 			        	console.log(err);
 				});
-	      	}
-			callback(err, myDocument.videoID);
+    	}
+  		if(err)
+      	callback(err, null);
+	    else
+	    	callback(err, myDocument.videoID);
 		});
 	}); 
 };

@@ -5,7 +5,7 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   z-index: -2;
-  background-image: url(http://www.weirdtube.wtf/img/Rpi_logo.png);
+  background-image: url(./img/Rpi_logo.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 50%;
