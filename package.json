@@ -33,8 +33,10 @@
     "mongodb": "^2.2.11",
     "mongoose": "^4.6.6",
     "morgan": "^1.7.0",
+    "node-schedule": "^1.2.0",
     "passport": "*",
     "passport-local": "*",
-    "passport-local-mongoose": "*"
+    "passport-local-mongoose": "*",
+    "request": "^2.79.0"
   }
 }
