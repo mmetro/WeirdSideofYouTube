@@ -143,7 +143,6 @@ exports.getVideoInfo = function(req, res) {
 	var youtubeAPIKey = "AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8";
 	request('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + req.params.videoID + '&key=' + youtubeAPIKey, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-      		console.log(body);
       		res.send(body);
     	}	
 	});
