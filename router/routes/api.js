@@ -10,4 +10,7 @@ router.get('/getnumvids', api.getNumVids);
 // get the last 50 videos in the history for the logged in user
 router.get('/gethistory', api.getVideoHistory);
 
+// get the youtube API response for a video ID
+router.get('/getVidInfo/:videoID/', api.getVideoInfo);
+
 module.exports = router;

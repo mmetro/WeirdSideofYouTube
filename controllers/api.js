@@ -7,6 +7,7 @@ var Counter = require('../models/counters');
 var VideoHistory = require('../models/videohistory');
 var Chance = require('chance');
 var chance = new Chance();
+var request = require('request');
 
 // internal function for adding a video to the database
 // vid is a string representing the youtube video ID
@@ -135,6 +136,18 @@ exports.getNumVids = function(req, res) {
   	res.json({'numVids' : count.seq});
   });
 };
+
+// handler for a request for video information
+// Will return the same data that the youtube API would return about a video
+exports.getVideoInfo = function(req, res) {
+	var youtubeAPIKey = "AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8";
+	request('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + req.params.videoID + '&key=' + youtubeAPIKey, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+      		console.log(body);
+      		res.send(body);
+    	}	
+	});
+}
 
 
 exports.parseYoutubeURL = function(url) 
