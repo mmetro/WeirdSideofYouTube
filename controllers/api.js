@@ -17,15 +17,15 @@ exports.addVideo = function(vidID, callback)
 	Video.findOne({'videoID': vidID}, function (error, vid){
 		if(!vid)
 		{
-		    Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
-		        if(error)
-		            return next(error);
-		        Video.create({ 'videoID' : vidID, '_id': counter.seq }, function(err, vid){
-					if(err)
-			        	console.log(err);
-			        callback(err,vid);
-				});
-		    });
+	    Counter.findByIdAndUpdate('videos', {$inc: { seq: 1} }, {new: true, upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
+        if(error)
+          return next(error);
+        Video.create({ 'videoID' : vidID, '_id': counter.seq }, function(err, vid){
+          if(err)
+            console.log(err);
+            callback(err,vid);
+  		  });
+      });
 		}
 		else
 		{
@@ -66,7 +66,7 @@ exports.randomVideoID = function(user, callback)
 			if (user){
 	    	VideoHistory.create({ 'username' : user.username, 'videoID': myDocument.videoID }, function(err, vid){
 					if(err)
-			        	console.log(err);
+            console.log(err);
 				});
     	}
   		if(err)
@@ -95,28 +95,30 @@ exports.getVidRange = function(req, res) {
 	{
 		var smallestID = 1;
 		var largestID = counter.seq;
+
 		if(start_id < smallestID)
-	    {
-	      start_id = smallestID;
-	    }
-	    if(end_id < start_id)
-	    {
-	      end_id = start_id;
-	    }
-	    var len = end_id - start_id + 1;
-	    if(len > 50)
-	    {
-	      len = 50;
-	    }
-	    Video.find({_id: {$gte: start_id }}, {'videoID':1}).limit(len).lean().exec(function (err, docs) {
-	    	res.json(docs);
-	    });
+    {
+      start_id = smallestID;
+    }
+    if(end_id < start_id)
+    {
+      end_id = start_id;
+    }
+    var len = end_id - start_id + 1;
+    if(len > 50)
+    {
+      len = 50;
+    }
+
+    Video.find({_id: {$gte: start_id }}, {'videoID':1}).limit(len).lean().exec(function (err, docs) {
+    	res.json(docs);
+    });
 	});
 };
 
 
 // handler for a GET request for a user's video history
-// sends a JSON object containing the lsat 50 videos watched
+// sends a JSON object containing the last 50 videos watched
 exports.getVideoHistory = function(req, res) {
   if(req.user)
   {
@@ -140,15 +142,17 @@ exports.getNumVids = function(req, res) {
 // handler for a request for video information
 // Will return the same data that the youtube API would return about a video
 exports.getVideoInfo = function(req, res) {
+  // XXX TODO set this key in the 'config' directory
 	var youtubeAPIKey = "AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8";
 	request('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + req.params.videoID + '&key=' + youtubeAPIKey, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-      		res.send(body);
-    	}	
+  		res.send(body);
+  	}	
 	});
 }
 
 
+// XXX create a function that parses a video ID from a youtube URL
 exports.parseYoutubeURL = function(url) 
 {
   

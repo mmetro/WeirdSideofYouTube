@@ -9,9 +9,9 @@ var request = require('request');
 var schedule = require('node-schedule');
 
 // handles the POST request for crawling reddit
-// adds the top video to the database
+// adds the top videos to the database
 exports.crawlReddit = function() {
-  // top 10 videos for the week
+  // top 100 videos for the year
   request('https://www.reddit.com/r/deepintoyoutube/top/.json?limit=100&t=year', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var reqJSON = JSON.parse(body);
@@ -25,11 +25,12 @@ exports.crawlReddit = function() {
         console.log("Adding video id: " + videoid + " to database");
         api.addVideo(videoid, function(err, vid){
           if(err)
-              console.log(err);
+            console.log(err);
         });
       }
     }
   })
 };
 
+// Run this function periodically (daily?)
 var j = schedule.scheduleJob('0 0 * * *', exports.crawlReddit);

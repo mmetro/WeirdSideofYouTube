@@ -1,3 +1,5 @@
+#NOTE: Due to the rate limiting of this configuration, the admin panel and history page may not display video titles.
+#       We may combine the many simultaneous requests into one bulk request to avoid this.  If we have already done this, you will see video titles correctly on these pages.
 #example anti-ddos nginx configuration
 limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 limit_req zone=one burst=10 nodelay;

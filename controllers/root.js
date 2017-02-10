@@ -20,10 +20,10 @@ exports.getRegister = function(req, res) {
 
 // handler for the POST request for registering a user
 exports.postRegister = function(req, res) {
-  // Use the 'response' object to render the 'index' view with a 'title' and a stringified 'user' properties
+  // passport-local-mongoose acts as middleware here.  No plaintext passwords should be stored (feel free to double check this)
   Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
       if (err) {
-          return res.render('register', { account : account });
+        return res.render('register', { account : account });
       }
 
       passport.authenticate('local')(req, res, function () {
