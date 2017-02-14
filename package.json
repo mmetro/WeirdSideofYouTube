@@ -1,24 +1,17 @@
 {
-  "name": "node-bootstrap3-template",
+  "name": "weird-side-of-youtube",
   "version": "0.0.1",
-  "description": "a template for express, node.js, and twitter bootstrap 3",
+  "description": "A site to view weird YouTube videos",
   "main": "app.js",
   "scripts": {
     "start": "node app.js "
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mjhea0/node-bootstrap3-template.git"
+    "url": "git@github.com:mmetro/WeirdSideofYouTube.git"
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "template",
-    "twitter",
-    "bootstrap",
-    "bootstrap3"
-  ],
-  "author": "Michael Herman <michael@mherman.org>",
+  "homepage": "https://github.com/mmetro/WeirdSideofYouTube",
+  "author": "RCOS",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.16",
@@ -35,5 +28,6 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "request": "^2.79.0"
-  }
+},
+"private": true
 }
