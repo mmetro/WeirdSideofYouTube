@@ -45,7 +45,8 @@
 		$.getJSON("/api/gethistory/", function(videos) {
 			$.each(videos, function(key, value) {
 				$('<tr id="' + value.videoID + '" class="videoRow">').append(
-					$('<td>').text(value.videoID),
+					$('<td>').html('<a href="http://www.youtube.com/watch?v=' + 
+					value.videoID + '">' + value.videoID + '</a>'),
 					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 					$('<td>').attr("id", "title"),
 					$('<td>').text(value.time)
