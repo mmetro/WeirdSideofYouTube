@@ -1,6 +1,7 @@
 #!/bin/env node
 var readline = require("readline");
 var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 var Account = require("../models/account");
 
 var database = require("../config/db");
