@@ -10,7 +10,6 @@ var LocalStrategy = require('passport-local').Strategy;
 // express middleware
 //var favicon = require('serve-favicon');
 var logger = require('morgan');
-var methodOverride = require('method-override');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -21,13 +20,12 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 //app.set('view engine', 'jade');
-app.set('view engine', 'ejs');  
+app.set('view engine', 'ejs');
 app.set('view options', { layout: false });
 app.use(logger('dev'));
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride());
 app.use(cookieParser('CHANGEMESECRET'));
 app.use(session({ resave: true,
                   saveUninitialized: true,
