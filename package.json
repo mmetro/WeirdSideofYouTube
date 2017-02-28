@@ -28,6 +28,9 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "request": "^2.79.0"
-},
-"private": true
+  },
+  "private": true,
+  "devDependencies": {
+    "eslint": "^3.16.1"
+  }
 }

@@ -1,6 +1,4 @@
 // dependencies
-var fs = require('fs');
-var http = require('http');
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
@@ -27,9 +25,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser('CHANGEMESECRET'));
-app.use(session({ resave: true,
-                  saveUninitialized: true,
-                  secret: 'sessionsecret' }));
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'sessionsecret'
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 //app.use(app.router);
@@ -38,10 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // env config
 var env = process.env.NODE_ENV || 'development';
 if ('development' == env) {
-    app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+  app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 }
 else {
-    app.use(express.errorHandler());
+  app.use(express.errorHandler());
 }
 
 // passport config
@@ -54,9 +54,6 @@ passport.deserializeUser(Account.deserializeUser());
 var database = require('./config/db');
 mongoose.connect(database.url);
 
-// routes
-var router = require('./router')(app);
-
 app.listen(app.get('port'), function(){
-  console.log(("Express server listening on port " + app.get('port')))
+  console.log(('Express server listening on port ' + app.get('port')));
 });
