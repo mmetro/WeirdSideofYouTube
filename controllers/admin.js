@@ -1,8 +1,6 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-var passport = require('passport');
-var Account = require('../models/account');
 var Video = require('../models/video');
 var Counter = require('../models/counters');
 var api = require('./api');
@@ -26,10 +24,10 @@ exports.getIndex = function(req, res) {
 
 // handles the POST request for submitting a video
 exports.postSubmitVid = function(req, res) {
-  api.addVideo(req.body.videoID, function(err, vid){
+  api.addVideo(req.body.videoID, function(err, _vid){
     if(err)
-        console.log(err);
-      else
+      console.log(err);
+    else
         res.redirect('/admin');
   });
 };
@@ -47,10 +45,9 @@ exports.postRemoveVid = function(req, res) {
 exports.getVidRangeAdmin = function(req, res) {
   var start_id = parseInt(req.params.start);
   var end_id = parseInt(req.params.end);
-  Counter.findById('videos', function(error, counter)
+  Counter.findById('videos', function(_error, _counter)
   {
     var smallestID = 1;
-    var largestID = counter.seq;
 
     if(start_id < smallestID)
     {
