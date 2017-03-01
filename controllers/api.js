@@ -8,6 +8,7 @@ var VideoHistory = require('../models/videohistory');
 var Chance = require('chance');
 var chance = new Chance();
 var request = require('request');
+var BannedVideo = require('../models/bannedvideo');
 
 // internal function for adding a video to the database
 // vid is a string representing the youtube video ID
@@ -45,7 +46,7 @@ exports.addVideo = function (vidID, callback)
       callback(null, vidID);
     }
   });
-}
+};
 
 // internal function for removing a video by youtube ID
 exports.removeVideo = function (vidID)
@@ -77,7 +78,7 @@ exports.removeVideo = function (vidID)
       });
     });
   }
-}
+};
 
 // internal function for getting a random youtube ID.
 // tries to avoid repeating videos in the recent user history by reselecting up to 5 times
@@ -87,15 +88,15 @@ exports.randomVideoID = function (user, callback)
   Counter.findById('videos', function (err, count)
   {
 
-    var currentVideoHistory = VideoHistory.find({ username: req.user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, (int)(Video.len / 2)));
-    var rand = 1;
-    var loopExitCounter = 5;
-    while (loopExitCounter > 0)
+    var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
+    var rand = chance.integer({ min: 0, max: (count.seq - 1) });
+    var loopExitCounter = 0;
+    while (loopExitCounter < 5)
     {
-      loopExitCounter--;  //Worst case is 5, then just pick a truly random video.
-      rand = chance.integer({ min: 1, max: (count.seq - 1) });
       if (currentVideoHistory.findById(rand) != -1)
         break;
+      loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
+      rand = chance.integer({ min: 0, max: (count.seq - 1) });
     }
     Video.findByIdAndUpdate(rand, { $inc: { views: 1 } }, function (err, myDocument)
     {
@@ -197,12 +198,11 @@ exports.getVideoInfo = function (req, res)
       res.send(body);
     }
   });
-}
+};
 
 
 // XXX create a function that parses a video ID from a youtube URL
 exports.parseYoutubeURL = function (url)
 {
 
-}
-
+};
