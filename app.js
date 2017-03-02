@@ -32,7 +32,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(app.router);
+// app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // env config
@@ -53,6 +53,9 @@ passport.deserializeUser(Account.deserializeUser());
 // mongoose
 var database = require('./config/db');
 mongoose.connect(database.url);
+
+// routes
+require('./router')(app);
 
 app.listen(app.get('port'), function(){
   console.log(('Express server listening on port ' + app.get('port')));
