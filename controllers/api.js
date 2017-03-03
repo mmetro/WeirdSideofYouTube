@@ -57,7 +57,9 @@ exports.removeVideo = function (vidID)
     BannedVideo.create({ 'videoID': vidID }, function (err, vid)
     {
       if (err)
+      {
         console.log(err);
+      }
       callback(err, vid);
     });
     Video.findOne({ 'videoID': vidID }, function (error, video)
@@ -87,17 +89,20 @@ exports.randomVideoID = function (user, callback)
 {
   Counter.findById('videos', function (err, count)
   {
-
-    var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
-    var rand = chance.integer({ min: 0, max: (count.seq - 1) });
-    var loopExitCounter = 0;
-    while (loopExitCounter < 5)
+    var rand = chance.integer({ min: 1, max: (count.seq - 1) });
+    if(user)
     {
-      if (currentVideoHistory.findById(rand) != -1)
-        break;
-      loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
-      rand = chance.integer({ min: 0, max: (count.seq - 1) });
+      var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
+      var loopExitCounter = 0;
+      while (loopExitCounter < 5)
+      {
+        rand = chance.integer({ min: 1, max: (count.seq - 1) });
+        if (currentVideoHistory.findById(rand) != -1)
+          break;
+        loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
+      }
     }
+
     Video.findByIdAndUpdate(rand, { $inc: { views: 1 } }, function (err, myDocument)
     {
       if (user)
