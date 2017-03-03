@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var counter = require('./counters');
+var videocache = require('./videocache');
 
 var Video = new Schema({
   _id: Number,
@@ -11,7 +12,7 @@ var Video = new Schema({
   skips: { type: Number, default: 0 },
   time: {type: Date, default: Date.now},
   submittedUser: {type: String, default: '' },
-  title: {type: String, default: '' }
+  cache: [{type: Schema.Types.ObjectId, ref: 'VideoCache'}]
 });
 
 // Improve performance and ensure no duplicates
