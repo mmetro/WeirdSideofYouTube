@@ -97,8 +97,17 @@ exports.randomVideoID = function (user, callback)
       while (loopExitCounter < 5)
       {
         rand = chance.integer({ min: 1, max: (count.seq - 1) });
-        if (currentVideoHistory.findById(rand) != -1)
+
+        //Get the index's video ID and check that against the history.
+        var vid_id;
+        Video.findById(rand, function (err, myDocument)
+        {
+          vid_id = myDocument.videoID;
+        });
+        if (currentVideoHistory.findOne(vid_id) != -1)
+        {
           break;
+        }
         loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
       }
     }
