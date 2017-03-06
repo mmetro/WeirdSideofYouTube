@@ -90,7 +90,8 @@
 							$('<input>').attr({"type": "submit", "value": "Delete Video"})
 						)
 					),
-					$('<td>').text(value.videoID),
+					$('<td>').html('<a href="http://www.youtube.com/watch?v=' +
+          value.videoID + '">' + value.videoID + '</a>'),
 					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 					$('<td>').attr("id", "title"),
 					$('<td>').text(value.views),
@@ -110,8 +111,8 @@
 		numVideos = numVids.numVids;
 		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
 	});
-	 
-	 $('#nextButtonTop, #nextButtonBottom').click(function(){	
+
+	 $('#nextButtonTop, #nextButtonBottom').click(function(){
 		currentVideoID += videosPerPage;
 		if(currentVideoID > numVideos)
 		{
@@ -119,7 +120,7 @@
 		}
 		loadNewTable();
 	 });
-	 
+
 	 $('#previousButtonTop, #previousButtonBottom').click(function(){
 		currentVideoID -= videosPerPage;
 		if(currentVideoID < 1){

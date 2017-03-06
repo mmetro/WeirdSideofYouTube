@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <title>Video History</title>
   <link rel="stylesheet" href="https://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" type="text/css" href="/css/newstyle.css">
@@ -45,7 +45,8 @@
 		$.getJSON("/api/gethistory/", function(videos) {
 			$.each(videos, function(key, value) {
 				$('<tr id="' + value.videoID + '" class="videoRow">').append(
-					$('<td>').text(value.videoID),
+          $('<td>').html('<a href="http://www.youtube.com/watch?v=' +
+          value.videoID + '">' + value.videoID + '</a>'),
 					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
 					$('<td>').attr("id", "title"),
 					$('<td>').text(value.time)
@@ -55,7 +56,7 @@
 				});
 			});
 		});
-	}	
+	}
 
 	loadNewTable();
 </script>
