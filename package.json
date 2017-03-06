@@ -1,40 +1,36 @@
 {
-  "name": "node-bootstrap3-template",
+  "name": "weird-side-of-youtube",
   "version": "0.0.1",
-  "description": "a template for express, node.js, and twitter bootstrap 3",
+  "description": "A site to view weird YouTube videos",
   "main": "app.js",
   "scripts": {
     "start": "node app.js "
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mjhea0/node-bootstrap3-template.git"
+    "url": "git@github.com:mmetro/WeirdSideofYouTube.git"
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "template",
-    "twitter",
-    "bootstrap",
-    "bootstrap3"
-  ],
-  "author": "Michael Herman <michael@mherman.org>",
+  "homepage": "https://github.com/mmetro/WeirdSideofYouTube",
+  "author": "RCOS",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.16",
     "chance": "^1.0.4",
     "cookie-parser": "^1.4.3",
-    "ejs": "^2.5.2",
-    "errorhandler": "^1.4.3",
-    "express": "^5.0.0-alpha.2",
-    "express-session": "^1.14.2",
-    "jade": "^1.11.0",
-    "method-override": "^2.3.6",
-    "mongodb": "^2.2.11",
-    "mongoose": "^4.6.6",
-    "morgan": "^1.7.0",
-    "passport": "*",
-    "passport-local": "*",
-    "passport-local-mongoose": "*"
+    "ejs": "^2.5.5",
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.1",
+    "express-session": "^1.15.0",
+    "mongoose": "^4.8.1",
+    "morgan": "^1.8.0",
+    "node-schedule": "^1.2.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "request": "^2.79.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "eslint": "^3.16.1"
   }
 }

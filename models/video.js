@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var counter = require('./counters');
-var videocache = require('./videocache');
-
 var Video = new Schema({
   _id: Number,
   videoID: String,
