@@ -39,7 +39,7 @@
 	<span>
 	<label>Video ID:</label>
 	<input type="text" name="videoID"/>
-	<input type="submit" value="Remove" class="pure-button"/>
+	<input type="submit" value="Remove/ban" class="pure-button"/>
 	</span>
 </form>
 
@@ -52,6 +52,7 @@
 <p id="vidRange">No videos loaded</p>
 <input id="previousButtonTop" type="button" value="Previous Page">
 <input id="nextButtonTop" type="button" value="Next Page">
+<input id="viewBannedVideoButtonTop" type="button" value="View banned videos">
 
 <table id="videoTable" cellspacing="5" class="pure-table">
 	<tr id="tableheader">
@@ -75,11 +76,12 @@
 
 <script type="text/javascript">
 	var currentVideoID = 1;
+	var bannedVideoView = false;
 	var numVideos = 0;
 	var videosPerPage = 50;
 
 	function loadNewTable(){
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
+		$('#vidRange').text("Showing " + (bannedVideoView ? "banned" : "") + " videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
 		$('#videoTable tr').remove(".videoRow");
 		$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 			$.each(videos, function(key, value) {
@@ -108,10 +110,17 @@
 
 	$.getJSON("/api/getnumvids/", function(numVids) {
 		numVideos = numVids.numVids;
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
+		$('#vidRange').text("Showing " + (bannedVideoView ? "banned" : "") + "videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
 	});
-	 
-	 $('#nextButtonTop, #nextButtonBottom').click(function(){	
+
+	$('#viewBannedVideoButtonTop').click(function(){
+	 //currentVideoID = 1;
+	 //bannedVideoView = !bannedVideoView;
+	 //}
+	 //loadNewTable();
+	});
+
+	 $('#nextButtonTop, #nextButtonBottom').click(function(){
 		currentVideoID += videosPerPage;
 		if(currentVideoID > numVideos)
 		{
@@ -119,7 +128,7 @@
 		}
 		loadNewTable();
 	 });
-	 
+
 	 $('#previousButtonTop, #previousButtonBottom').click(function(){
 		currentVideoID -= videosPerPage;
 		if(currentVideoID < 1){

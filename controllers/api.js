@@ -60,7 +60,6 @@ exports.removeVideo = function (vidID)
       {
         console.log(err);
       }
-      callback(err, vid);
     });
     Video.findOne({ 'videoID': vidID }, function (error, video)
     {
@@ -89,26 +88,30 @@ exports.randomVideoID = function (user, callback)
 {
   Counter.findById('videos', function (err, count)
   {
-    var rand = chance.integer({ min: 1, max: (count.seq - 1) });
-    if(user)
+    var rand = 1;
+    if(count.seq > 1)
     {
-      var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
-      var loopExitCounter = 0;
-      while (loopExitCounter < 5)
+      rand = chance.integer({ min: 1, max: (count.seq - 1) });
+      if(user)
       {
-        rand = chance.integer({ min: 1, max: (count.seq - 1) });
+        var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
+        var loopExitCounter = 0;
+        while (loopExitCounter < 5)
+        {
+          rand = chance.integer({ min: 1, max: (count.seq - 1) });
 
-        //Get the index's video ID and check that against the history.
-        var vid_id;
-        Video.findById(rand, function (err, myDocument)
-        {
-          vid_id = myDocument.videoID;
-        });
-        if (currentVideoHistory.findOne(vid_id) != -1)
-        {
-          break;
+          //Get the index's video ID and check that against the history.
+          var vid_id;
+          Video.findById(rand, function (err, myDocument)
+          {
+            vid_id = myDocument.videoID;
+          });
+          if (currentVideoHistory.findOne(vid_id) != -1)
+          {
+            break;
+          }
+          loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
         }
-        loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
       }
     }
 
@@ -192,6 +195,15 @@ exports.getVideoHistory = function (req, res)
 
 // handler for a GET request for the number of videos in the database
 exports.getNumVids = function (req, res)
+{
+  Counter.findById('videos', function (err, count)
+  {
+    res.json({ 'numVids': count.seq });
+  });
+};
+
+// handler for a GET request for the number of banned videos in the database
+exports.getNumBannedVids = function (req, res)
 {
   Counter.findById('videos', function (err, count)
   {
