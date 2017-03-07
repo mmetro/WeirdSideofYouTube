@@ -175,6 +175,7 @@ input {
   text-align: center;
   font-family: 'Barrio', cursive;
   font-size: 32px;
+  font-size: 4vmin;
   font-style: normal;
   font-variant: small-caps;
   font-weight: 100px;
@@ -188,7 +189,7 @@ input {
   text-align: center;
   text-transform: none;
   font-size: 18px;
-  font-size: 4vw;
+  font-size: 3vmin;
   font-weight: lighter;
   font-variant: normal;
   width: 75%;
@@ -211,6 +212,7 @@ input {
   text-align: center;
   font-family: 'Barrio', cursive;
   font-size: 32px;
+  font-size: 4vmin;
   font-style: normal;
   font-variant: small-caps;
   font-weight: 100px;
@@ -223,8 +225,8 @@ input {
 #memorybody{
   text-align: center;
   text-transform: none;
-  font-size: 18px;
-  font-size: 4vw;
+  font-size: 20px;
+  font-size: 3vmin;
   font-weight: lighter;
   font-variant: normal;
   width: 75%;
