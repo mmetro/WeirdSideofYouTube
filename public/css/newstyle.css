@@ -175,6 +175,7 @@ input {
   text-align: center;
   font-family: 'Barrio', cursive;
   font-size: 32px;
+  font-size: 4vmin;
   font-style: normal;
   font-variant: small-caps;
   font-weight: 100px;
@@ -186,7 +187,9 @@ input {
 
 #textbody {
   text-align: center;
+  text-transform: none;
   font-size: 18px;
+  font-size: 3vmin;
   font-weight: lighter;
   font-variant: normal;
   width: 75%;
@@ -203,6 +206,34 @@ input {
   width: 75%;
   margin: auto;
   padding: 5px 5px 10px 5px;
+}
+
+#memory {
+  text-align: center;
+  font-family: 'Barrio', cursive;
+  font-size: 32px;
+  font-size: 4vmin;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 100px;
+  line-height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(240, 240, 240);
+}
+
+#memorybody{
+  text-align: center;
+  text-transform: none;
+  font-size: 20px;
+  font-size: 3vmin;
+  font-weight: lighter;
+  font-variant: normal;
+  width: 75%;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(240, 240, 240);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #youtube-player-container {
