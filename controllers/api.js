@@ -86,50 +86,91 @@ exports.removeVideo = function (vidID)
 // the callback function expects an error as the first argument, and the video ID as the second
 exports.randomVideoID = function (user, callback)
 {
+  //Get video database count
   Counter.findById('videos', function (err, count)
   {
     var rand = 1;
+    //Check that video count is greater than 1
     if(count.seq > 1)
     {
-      rand = chance.integer({ min: 1, max: (count.seq - 1) });
+      //Initially set the random variable to be random index from 0 to length
+      rand = chance.integer({ min: 1, max: (count.seq) });
       if(user)
       {
-        var currentVideoHistory = VideoHistory.find({ username: user.username }, { '_id': 0, 'videoID': 1, 'x': 1 }).sort({ time: -1 }).limit(Math.min(50, count.seq / 2));
+        console.log('finding video for ' + user.username);
         var loopExitCounter = 0;
         while (loopExitCounter < 5)
         {
-          rand = chance.integer({ min: 1, max: (count.seq - 1) });
-
-          //Get the index's video ID and check that against the history.
+          //Get the random index's video ID
           var vid_id;
-          Video.findById(rand, function (err, myDocument)
-          {
-            vid_id = myDocument.videoID;
+          var needs_break = false;
+          Video.findById(rand, function (err, doc) {
+            if (err)
+              console.log(err);
+            vid_id = doc.videoID;
+            console.log('trying ' + vid_id + ' at ' + rand + ' in history of length ' + parseInt(count.seq / 2));
+            //Check the video ID against user history- if we find a match in recent history, reroll.
+
+            //TODO: This part appears to finds videos correctly, but will not limit them correctly...
+            var history = VideoHistory.find({username: user.username}, {'videoID': 1}).sort({time: -1}).limit(parseInt(count.seq/2));
+            history.find({'videoID': vid_id}, function (err, video_found)
+            {
+              if (err)
+                console.log(err);
+              console.log('found video: ' + video_found);
+              if(video_found == null)
+              {
+                needs_break = true;
+                console.log('Found a video that is not in recent history of ' + parseInt(count.seq / 2));
+              }
+            });
           });
-          if (currentVideoHistory.findOne(vid_id) != -1)
+          if(needs_break)
           {
             break;
           }
+          rand = chance.integer({ min: 1, max: (count.seq) });
           loopExitCounter++;  //Worst case is 5, then just pick a truly random video.
         }
-      }
-    }
 
-    Video.findByIdAndUpdate(rand, { $inc: { views: 1 } }, function (err, myDocument)
-    {
-      if (user)
+        //User exists and the video is not in recent history- update it here
+        Video.findByIdAndUpdate(rand, { $inc: { views: 1 } }, function (err, myDocument)
+        {
+          if (user)
+          {
+            VideoHistory.create({ 'username': user.username, 'videoID': myDocument.videoID }, function (err, vid)
+            {
+              if (err)
+                console.log(err);
+            });
+          }
+          if (err)
+          {
+            callback(err, null);
+          }
+          else
+          {
+            callback(err, myDocument.videoID);
+          }
+        });
+
+      }
+      else
       {
-        VideoHistory.create({ 'username': user.username, 'videoID': myDocument.videoID }, function (err, vid)
+        //If no user, update the video but not the history
+        Video.findByIdAndUpdate(rand, { $inc: { views: 1 } }, function (err, myDocument)
         {
           if (err)
-            console.log(err);
+          {
+            callback(err, null);
+          }
+          else
+          {
+            callback(err, myDocument.videoID);
+          }
         });
       }
-      if (err)
-        callback(err, null);
-      else
-        callback(err, myDocument.videoID);
-    });
+    }
   });
 };
 
