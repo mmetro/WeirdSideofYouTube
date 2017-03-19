@@ -16,11 +16,10 @@ exports.crawlRedditUrl = function(reddit_url)
         // http://stackoverflow.com/questions/10591547/how-to-get-youtube-video-id-from-url
         // modified to work with timestamps or a question mark
         // this line of code is licensed under cc by-sa 3.0
-        var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&\?]+)/);
-        if(videoid != null)
+        if(url != null)
         {
-          console.log('Adding video id: ' + videoid + ' to database');
-          api.addVideo(videoid[1], function(err, _vid){
+          console.log('Adding video id: ' + url + ' to database');
+          api.addVideo(url, function(err, _vid){
             if(err)
               console.log(err);
           });

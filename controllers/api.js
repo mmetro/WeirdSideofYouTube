@@ -12,8 +12,14 @@ var BannedVideo = require('../models/bannedvideo');
 
 // internal function for adding a video to the database
 // vid is a string representing the youtube video ID
-exports.addVideo = function (vidID, callback)
+exports.addVideo = function (video_url_or_id, callback)
 {    //Don't re-add a banned video
+  var video_split = video_url_or_id.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&\?]+)/);
+  var vidID = video_url_or_id;
+  if(video_url_or_id != null && video_split != null)
+  {
+    vidID = video_split[1];
+  }
   BannedVideo.findOne({ 'videoID': vidID }, function (error, vid)
   {
     if (!vid)
