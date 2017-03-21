@@ -49,8 +49,7 @@
 </div>
 
 <div id='youtube-player-container'>
-  <a href="#" onClick='jQuery("#youtube-player-container").tubeplayer("play", document.getElementById("videoID").value)'>
-  </a>
+  <div id='youtube-player'></div>
 </div>
 
 <div id="playDiv">
@@ -59,40 +58,7 @@
   </a>
 </div>
 
-<script type="text/javascript">
-        function playNextVid() {
-          $.getJSON("./api/getrandomvid", function(vid) {
-            console.log(vid);
-            jQuery("#youtube-player-container").tubeplayer("play", vid.vidID);
-          });
-        }
-
-        jQuery("#youtube-player-container").tubeplayer({
-  autoPlay: true,
-  width: "80%", // the width of the player
-  height: 550, // the height of the player
-  allowFullScreen: "true", // true by default, allow user to go full screen
-  initialVideo: "<%= videoID %>", // the video that is loaded into the player
-  preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
-  onPlay: function(id){}, // after the play method is called
-  onPause: function(){}, // after the pause method is called
-  onStop: function(){}, // after the player is stopped
-  onSeek: function(time){}, // after the video has been seeked to a defined point
-  onMute: function(){},
-  onPlayerEnded: function(){
-    playNextVid();
-        },
-  onPlayerPlaying: function(){
-    var theatrebox = document.querySelector("#theatre-box");
-    var title = document.querySelector("#title");
-    title.style.visibility = "visible";
-  }, // after the player is muted
-  onUnMute: function(){}, // after the player is unmuted
-        // Error State Specific Functionality
-  onErrorNotFound: function(){playNextVid();}, // if a video cant be found
-  onErrorNotEmbeddable: function(){playNextVid();}, // if a video isnt embeddable
-  onErrorInvalidParameter: function(){playNextVid();} // if we've got an invalid param
-});</script>
+<script type="text/javascript" src="bundle.js"></script>
 
 </body>
 
