@@ -4,7 +4,7 @@ var player = YouTubePlayer('youtube-player', {
   autoPlay: true,
   preferredQuality: 'default',
   allowFullScreen: 'true',
-  videoId: 'ENBWOIRO2WQ'
+  videoId: window.initVid
 });
 
 player.on('ready', function(_event) {
