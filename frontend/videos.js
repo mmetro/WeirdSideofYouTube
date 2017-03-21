@@ -18,6 +18,10 @@ player.on('stateChange', function(event) {
   }
 });
 
+player.on('error', function(_event) {
+  playNextVid();
+});
+
 function playNextVid() {
   fetch('./api/getrandomvid').then(function(response) {
     return response.json();
