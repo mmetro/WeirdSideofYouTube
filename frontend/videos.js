@@ -11,6 +11,13 @@ player.on('ready', function(_event) {
   player.playVideo();
 });
 
+player.on('stateChange', function(event) {
+  // If video ended
+  if(event.data === 0) {
+    playNextVid();
+  }
+});
+
 function playNextVid() {
   fetch('./api/getrandomvid').then(function(response) {
     return response.json();
