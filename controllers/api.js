@@ -65,14 +65,26 @@ exports.removeVideo = function (video_url_or_id)
   }
   if (vidID)
   {
-    // add the video to the banned list so that it will not be added again
-    BannedVideo.create({ 'videoID': vidID }, function (err, vidID)
+
+
+    // Don't add duplicates to the database
+    BannedVideo.findOne({ 'videoID': vidID }, function (error, vid)
     {
-      if (err)
+      if (!vid)
       {
-        console.log(err);
+        Counter.findByIdAndUpdate('bannedvideos', { $inc: { seq: 1 } }, { new: true, upsert: true, setDefaultsOnInsert: true }, function (error, counter)
+        {
+          if (error)
+            return next(error);
+          BannedVideo.create({ 'videoID': vidID, '_id': counter.seq }, function (err, vid)
+          {
+            if (err)
+              console.log(err);
+          });
+        });
       }
     });
+
     Video.findOne({ 'videoID': vidID }, function (error, video)
     {
       var __id = video._id;
@@ -210,6 +222,16 @@ exports.getNumVids = function (req, res)
   });
 };
 
+// handler for a GET request for the number of videos in the database
+exports.getNumBannedVids = function (req, res)
+{
+  Counter.findById('bannedvideos', function (err, count)
+  {
+    res.json({ 'numBannedVids': count.seq });
+  });
+};
+
+
 // handler for a request for video information
 // Will return the same data that the youtube API would return about a video
 exports.getVideoInfo = function (req, res)
@@ -223,11 +245,4 @@ exports.getVideoInfo = function (req, res)
       res.send(body);
     }
   });
-};
-
-
-// XXX create a function that parses a video ID from a youtube URL
-exports.parseYoutubeURL = function (url)
-{
-
 };
