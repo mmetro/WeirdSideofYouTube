@@ -1,10 +1,13 @@
 #!/bin/env node
 
 var mongoose = require('mongoose');
-var api = require('../controllers/api.js');
 var Counter = require('../models/counters.js');
 
 var database = require('../config/db');
+
+var Video = require('../models/video.js');
+var BannedVideo = require('../models/bannedvideo.js');
+
 mongoose.connect(database.url);
 
 Counter.findById('bannedvideos', function (err, count)
@@ -15,4 +18,21 @@ Counter.findById('bannedvideos', function (err, count)
 Counter.findById('videos', function (err, count)
 {
   console.info(count.seq +  ' known videos exist');
+});
+
+
+Video.find({}, function(err, docs)
+{
+  docs.forEach(function(doc)
+  {
+    console.info('VidID: ' + doc.videoID);
+  });
+});
+
+BannedVideo.find({}, function(err, docs)
+{
+  docs.forEach(function(doc)
+  {
+    console.info('Banned VidID: ' + doc.videoID);
+  });
 });
