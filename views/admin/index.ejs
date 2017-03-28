@@ -53,16 +53,16 @@
 <input id="previousButtonTop" type="button" value="Previous Page">
 <input id="nextButtonTop" type="button" value="Next Page">
 
-<table id="videoTable" cellspacing="5" class="pure-table">
+<table id="videoTable" cellspacing="5" class="table">
 	<tr id="tableheader">
-	   <th>Controls</th>
+	   <td class = "header-cell">Controls</td>
 	   <!-- The stats button should expand and show full statistics for a video.  We can hide some of the stats that show by default, or add more -->
-	   <th>ID</th>
-	   <th>Thumbnail</th>
-	   <th>Title</th>
-	   <th>Views</th>
-	   <th>Skip %</th>
-	   <th>Error %</th>
+	   <td class = "header-cell"> ID</td>
+	   <td class = "header-cell">Thumbnail</td>
+	   <td class = "header-cell">Title</td>
+	   <td class = "header-cell">Views</td>
+	   <td class = "header-cell">Skip %</td>
+	   <td class = "header-cell">Error %</td>
  	</tr>
 </table>
 
@@ -84,19 +84,19 @@
 		$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
 			$.each(videos, function(key, value) {
 				$('<tr id="' + value.videoID + '" class="videoRow">').append(
-					$('<td>').append(
+					$('<td class = "data-cell">').append(
 						$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
 							$('<input>').attr({"type": "hidden", "name": "videoID", "value": value.videoID}),
 							$('<input>').attr({"type": "submit", "value": "Delete Video"})
 						)
 					),
-					$('<td>').html('<a href="http://www.youtube.com/watch?v=' +
+					$('<td class = "data-cell">').html('<a href="http://www.youtube.com/watch?v=' +
           value.videoID + '">' + value.videoID + '</a>'),
-					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-					$('<td>').attr("id", "title"),
-					$('<td>').text(value.views),
-					$('<td>').text(value.skips/value.views*100 + "%"),
-					$('<td>').text(value.errorCount/value.views*100 + "%")
+					$('<td class = "data-cell">').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+					$('<td class = "data-cell">').attr("id", "title"),
+					$('<td class = "data-cell">').text(value.views),
+					$('<td class = "data-cell">').text(value.skips/value.views*100 + "%"),
+					$('<td class = "data-cell">').text(value.errorCount/value.views*100 + "%")
 				).appendTo( "#videoTable" );
 				$.getJSON("/api/getVidInfo/" + value.videoID, function(data) {
 					$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
