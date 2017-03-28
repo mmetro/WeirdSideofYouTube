@@ -4,7 +4,7 @@
 <title>Video History</title>
   <link rel="stylesheet" href="https://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" type="text/css" href="/css/newstyle.css">
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 </head>
 
 <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
@@ -31,10 +31,10 @@
 
 <table id="videoTable" cellspacing="5" class="pure-table">
 	<tr id="tableheader">
-	   <th>ID</th>
-	   <th>Thumbnail</th>
-	   <th>Title</th>
-	   <th>Date</th>
+    <td class = "header-cell"> ID</td>
+	  <td class = "header-cell">Thumbnail</td>
+	  <td class = "header-cell">Title</td>
+	  <td class = "header-cell"> Date</td>
  	</tr>
 </table>
 
@@ -45,11 +45,11 @@
 		$.getJSON("/api/gethistory/", function(videos) {
 			$.each(videos, function(key, value) {
 				$('<tr id="' + value.videoID + '" class="videoRow">').append(
-          $('<td>').html('<a href="http://www.youtube.com/watch?v=' +
+          $('<td class = "data-cell">').html('<a href="http://www.youtube.com/watch?v=' +
           value.videoID + '">' + value.videoID + '</a>'),
-					$('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-					$('<td>').attr("id", "title"),
-					$('<td>').text(value.time)
+					$('<td class = "data-cell">').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
+					$('<td class = "data-cell">').attr("id", "title"),
+					$('<td class = "data-cell">').text(value.time)
 				).appendTo( "#videoTable" );
 				$.getJSON("/api/getVidInfo/" + value.videoID, function(data) {
 					$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Barrio|Raleway:600');
 body {
-  background: rgb(25, 25, 25);
+  background: rgb(25, 25, 25) !important;
   color: rgb(240, 240, 240);
   margin: 0px;
   font-family: 'Open Sans', sans-serif;
@@ -158,7 +158,7 @@ input {
     box-sizing: border-box;
     border-bottom: 1px solid #fb998c;
   }
-  
+
   #navbar ul li.last > a
   #navbar ul li: last-child > a {
     border: 0;
@@ -173,13 +173,13 @@ input {
 
 #title {
   text-align: center;
-  font-family: 'Barrio', cursive;
-  font-size: 32px;
+  font-family: 'verdana',Geneva, sans-serif;
+  font-size: 24px;
   font-size: 4vmin;
   font-style: normal;
   font-variant: small-caps;
   font-weight: 100px;
-  line-height: 20px;
+  line-height: 48px;
   margin-left: auto;
   margin-right: auto;
   color: rgb(240, 240, 240);
@@ -191,9 +191,10 @@ input {
   font-size: 18px;
   font-size: 3vmin;
   font-weight: lighter;
+  line-height: 28px;
   font-variant: normal;
   width: 75%;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'verdana',Geneva, sans-serif;
   color: rgb(240, 240, 240);
   margin-left: auto;
   margin-right: auto;
@@ -210,7 +211,7 @@ input {
 
 #memory {
   text-align: center;
-  font-family: 'Barrio', cursive;
+  font-family: 'verdana',Geneva, sans-serif;
   font-size: 32px;
   font-size: 4vmin;
   font-style: normal;
@@ -230,7 +231,7 @@ input {
   font-weight: lighter;
   font-variant: normal;
   width: 75%;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'verdana',Geneva, sans-serif;
   color: rgb(240, 240, 240);
   margin-left: auto;
   margin-right: auto;
@@ -254,7 +255,7 @@ input {
   background-image: linear-gradient(to bottom, #707070, #333333);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 10px;
+  border-radius: 0px;
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
@@ -271,7 +272,7 @@ input {
 
 .playerbutton span {
   display: inline;
-  padding: 35px 40px 20px 40px;  
+  padding: 35px 40px 20px 40px;
   color: #fff;
   text-transform: uppercase;
   font-weight: 700;
@@ -296,3 +297,36 @@ input {
   text-shadow: -1px 1px #193047;
 }
 
+table{
+  border-collapse: separate;
+  border-spacing: 4px;
+  margin: 26px auto;
+}
+
+.header-cell{
+  width: 107px;
+  height: 40px;
+  text-align: center;
+  background-color: rgba(74, 171, 5, 0.8);
+  margin: 1.5px;
+  font-family: verdana;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0px 0px 2px #333333;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.data-cell{
+  width: 107px;
+  height: 66px;
+  background-color: #333333;
+  text-align: center;
+  font-family: verdana;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  font-weight: bold;
+  display: table-cell;
+  vertical-align: middle;
+  color: #FFFFFF;
+}
