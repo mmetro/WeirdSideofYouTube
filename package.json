@@ -4,7 +4,7 @@
   "description": "A site to view weird YouTube videos",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js "
+    "start": "webpack && node app.js "
   },
   "repository": {
     "type": "git",
