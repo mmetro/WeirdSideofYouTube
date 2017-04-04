@@ -1,8 +1,11 @@
 module.exports = {
-  entry: ['whatwg-fetch', './frontend/videos.js'],
+  entry: {
+    videos: ['whatwg-fetch', './frontend/videos.js'],
+    admin: ['whatwg-fetch', './frontend/admin.js']
+  },
   output: {
     path: __dirname + '/dist/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
