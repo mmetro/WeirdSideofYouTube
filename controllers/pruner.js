@@ -18,19 +18,21 @@ exports.pruneVideoDatabase = function()
 {
   Video.find({}, function(err, docs)
   {
+    var doc_count = 0;
     docs.forEach(function(doc)
     {
+      doc_count++;
       // XXX TODO set this key in the 'config' directory
       var youtubeAPIKey = 'AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8';
-      request('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + doc.vidID + '&key=' + youtubeAPIKey, function (error, response, body)
+      var requestID = ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + doc.videoID + '&key=' + youtubeAPIKey);
+      //Short delay so we don't overuse the API
+      setTimeout(request, 200 * doc_count, requestID, function (error, response, body)
       {
         if (!error && response.statusCode == 200)
         {
           var reqJSON = JSON.parse(body);
-          for(var i = 0; i < reqJSON.data.children.length; i++)
-          {
-            console.log(reqJSON.data.children[i].data);
-          }
+          console.log('This is the JSON data for ' + requestID + ':');
+          console.log(reqJSON);
         }
       });
     });
