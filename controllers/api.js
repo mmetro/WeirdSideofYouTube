@@ -231,7 +231,6 @@ exports.getNumBannedVids = function (req, res)
   });
 };
 
-
 // handler for a request for video information
 // Will return the same data that the youtube API would return about a video
 exports.getVideoInfo = function (req, res)
