@@ -73,62 +73,7 @@
 
 <br />
 
-<script type="text/javascript">
-	var currentVideoID = 1;
-	var numVideos = 0;
-	var videosPerPage = 50;
-
-	function loadNewTable(){
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
-		$('#videoTable tr').remove(".videoRow");
-		$.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
-			$.each(videos, function(key, value) {
-				$('<tr id="' + value.videoID + '" class="videoRow">').append(
-					$('<td class = "data-cell">').append(
-						$('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-							$('<input>').attr({"type": "hidden", "name": "videoID", "value": value.videoID}),
-							$('<input>').attr({"type": "submit", "value": "Delete Video"})
-						)
-					),
-					$('<td class = "data-cell">').html('<a href="http://www.youtube.com/watch?v=' +
-          value.videoID + '">' + value.videoID + '</a>'),
-					$('<td class = "data-cell">').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-					$('<td class = "data-cell">').attr("id", "title"),
-					$('<td class = "data-cell">').text(value.views),
-					$('<td class = "data-cell">').text(value.skips/value.views*100 + "%"),
-					$('<td class = "data-cell">').text(value.errorCount/value.views*100 + "%")
-				).appendTo( "#videoTable" );
-				$.getJSON("/api/getVidInfo/" + value.videoID, function(data) {
-					$('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
-				});
-			});
-		});
-	}
-
-	loadNewTable();
-
-	$.getJSON("/api/getnumvids/", function(numVids) {
-		numVideos = numVids.numVids;
-		$('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
-	});
-
-	 $('#nextButtonTop, #nextButtonBottom').click(function(){
-		currentVideoID += videosPerPage;
-		if(currentVideoID > numVideos)
-		{
-			currentVideoID -= videosPerPage;
-		}
-		loadNewTable();
-	 });
-
-	 $('#previousButtonTop, #previousButtonBottom').click(function(){
-		currentVideoID -= videosPerPage;
-		if(currentVideoID < 1){
-			currentVideoID = 1;
-		}
-			loadNewTable();
-	 });
-</script>
+<script type="text/javascript" src="admin.js"></script>
 
 </body>
 </html>
