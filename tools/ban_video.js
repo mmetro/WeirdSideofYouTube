@@ -13,7 +13,7 @@ var rl = readline.createInterface({
 });
 
 // Read a video ID from stdin
-rl.question('Enter a video ID to add: ', function(answer) {
+rl.question('Enter a video ID to remove: ', function(answer) {
   // Add it to the db
   api.removeVideo(answer, function(err, _vid) {
     if(err != null) {
