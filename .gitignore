@@ -9,3 +9,5 @@ node_modules
 *.out
 oauth.js
 dist/
+.elasticbeanstalk
+upload.zip
