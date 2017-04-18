@@ -34,8 +34,6 @@ function loadNewTable() {
   });
 }
 
-ready(loadNewTable);
-
 function generateNewEntry(video) {
   // Create table row
   var tr = document.createElement('tr');
@@ -86,53 +84,35 @@ function generateNewEntry(video) {
   return tr;
 }
 
-// function loadNewTable(){
-//   $('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
-//   $('#videoTable tr').remove(".videoRow");
-//   $.getJSON("/admin/getvidrange/" + currentVideoID.toString() + "/" + (currentVideoID + 49).toString(), function(videos) {
-//     $.each(videos, function(key, value) {
-//       $('<tr id="' + value.videoID + '" class="videoRow">').append(
-//         $('<td>').append(
-//           $('<form>').attr({"action": "/admin/remove", "method": "post"}).append(
-//             $('<input>').attr({"type": "hidden", "name": "videoID", "value": value.videoID}),
-//             $('<input>').attr({"type": "submit", "value": "Delete Video"})
-//           )
-//         ),
-//         $('<td>').html('<a href="http://www.youtube.com/watch?v=' +
-//         value.videoID + '">' + value.videoID + '</a>'),
-//         $('<td>').html('<img src="//i.ytimg.com/vi/' + value.videoID + '/default.jpg" />'),
-//         $('<td>').attr("id", "title"),
-//         $('<td>').text(value.views),
-//         $('<td>').text(value.skips/value.views*100 + "%"),
-//         $('<td>').text(value.errorCount/value.views*100 + "%")
-//       ).appendTo( "#videoTable" );
-//       $.getJSON("/api/getVidInfo/" + value.videoID, function(data) {
-//         $('#videoTable').find('#'+value.videoID).find('#title').text(data.items[0].snippet.title);
-//       });
-//     });
-//   });
-// }
-//
-// loadNewTable();
-//
-// $.getJSON("/api/getnumvids/", function(numVids) {
-//   numVideos = numVids.numVids;
-//   $('#vidRange').text("Showing videos " + currentVideoID.toString() + ' through ' + ((currentVideoID+videosPerPage <= numVideos) ? currentVideoID+videosPerPage : numVideos).toString() + " of " + numVideos.toString());
-// });
-//
-//  $('#nextButtonTop, #nextButtonBottom').click(function(){
-//   currentVideoID += videosPerPage;
-//   if(currentVideoID > numVideos)
-//   {
-//     currentVideoID -= videosPerPage;
-//   }
-//   loadNewTable();
-//  });
-//
-//  $('#previousButtonTop, #previousButtonBottom').click(function(){
-//   currentVideoID -= videosPerPage;
-//   if(currentVideoID < 1){
-//     currentVideoID = 1;
-//   }
-//     loadNewTable();
-//  });
+ready(function() {
+  loadNewTable();
+
+  fetch('/api/getnumvids/').then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    numVideos = data.numVids;
+    document.getElementById('vidRange').innerText = 'Showing videos ' +
+      currentVideoID + ' through ' +
+      ((currentVideoID+videosPerPage <= numVideos) ?
+        currentVideoID+videosPerPage : numVideos) +
+      ' of ' + numVideos;
+  });
+
+  var nxtPage = function() {
+    console.log(currentVideoID);
+    currentVideoID += videosPerPage;
+    if(currentVideoID > numVideos) currentVideoID -= videosPerPage;
+    console.log(currentVideoID);
+    loadNewTable();
+  };
+  document.getElementById('nextButtonTop').onclick = nxtPage;
+  document.getElementById('nextButtonBottom').onclick = nxtPage;
+
+  var prvPage = function() {
+    currentVideoID -= videosPerPage;
+    if(currentVideoID < 1) currentVideoID = 1;
+    loadNewTable();
+  };
+  document.getElementById('previousButtonTop').onclick = prvPage;
+  document.getElementById('previousButtonBottom').onclick = prvPage;
+});
