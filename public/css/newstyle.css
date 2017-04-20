@@ -177,8 +177,8 @@ input {
   font-size: 4vmin;
   font-style: normal;
   font-variant: small-caps;
-  font-weight: 100px;
-  line-height: 48px;
+  font-weight: bold;
+  line-height: 48px !important;
   margin-left: auto;
   margin-right: auto;
   color: rgb(240, 240, 240);
