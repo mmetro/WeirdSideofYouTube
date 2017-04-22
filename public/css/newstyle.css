@@ -451,7 +451,6 @@ table{
   .custom-menu-bottom {
     position: absolute;
     width: 100%;
-    border-top: 1px solid #eee;
     background-color: #808080\9;
     z-index: 100;
   }
@@ -479,28 +478,9 @@ table{
 
   .pure-menu-horizontal.custom-menu-tucked {
     z-index: -1;
-    top: 45px;
+    top: 0px;
     position: absolute;
     overflow: hidden;
   }
-
-}
-
-/* Custom underline  */
-
-.block-line {
-  color: gray;
-  display: inline;
-  border-bottom: 3px;
-  solid
-  padding-bottom: 8px;
-  line-height: 1.75em;
-}
-
-.block-line:after,
-.block-line:before {
-  content: "";
-  display: block;
-  margin: 1em 0;
 
 }
