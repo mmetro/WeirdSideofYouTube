@@ -16,6 +16,8 @@ mongoose.connect(database.url);
 //Removes any videos that are either in the banned video list, or bans them if they're inaccessable.
 exports.pruneVideoDatabase = function()
 {
+  var pruneCount = 0;
+  console.info('Beginning pruner, please be patient...');
   Video.find({}, function(err, docs)
   {
     var doc_count = 0;
@@ -24,15 +26,28 @@ exports.pruneVideoDatabase = function()
       doc_count++;
       // XXX TODO set this key in the 'config' directory
       var youtubeAPIKey = 'AIzaSyBf-B5_3Iz5a8Ij52BioFPOE4xJLqC9Sy8';
-      var requestID = ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + doc.videoID + '&key=' + youtubeAPIKey);
+      var videoID = doc.videoID;
+      var requestID = ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + videoID + '&key=' + youtubeAPIKey);
       //Short delay so we don't overuse the API
-      setTimeout(request, 200 * doc_count, requestID, function (error, response, body)
+      setTimeout(request, 100 * doc_count, requestID, videoID, function (error, response, body)
       {
         if (!error && response.statusCode == 200)
         {
           var reqJSON = JSON.parse(body);
-          console.log('This is the JSON data for ' + requestID + ':');
-          console.log(reqJSON);
+          console.log('Checking ' + videoID + ' ' + requestID + ':');
+          //console.log(JSON.stringify(reqJSON));
+          if(reqJSON.pageInfo.totalResults == 0)
+          {
+            //Video is not viewable, remove from database
+            api.removeVideoNoParse(videoID, function(err, _vid) {
+              if(err != null) {
+                console.error('There was a problem pruning the video');
+              } else {
+                pruneCount++;
+                console.info(requestID + ' pruned successfully! ' + pruneCount + ' videos removed so far.');
+              }
+            });
+          }
         }
       });
     });

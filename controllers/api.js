@@ -54,6 +54,47 @@ exports.addVideo = function (video_url_or_id, callback)
   });
 };
 
+//This removes the video but does not parse first, useful for removing weird IDs that might break the regex.
+exports.removeVideoNoParse = function (vidID)
+{
+
+  // Don't add duplicates to the database
+  BannedVideo.findOne({ 'videoID': vidID }, function (error, vid)
+  {
+    if (!vid)
+    {
+      Counter.findByIdAndUpdate('bannedvideos', { $inc: { seq: 1 } }, { new: true, upsert: true, setDefaultsOnInsert: true }, function (error, counter)
+      {
+        if (error)
+          return next(error);
+        BannedVideo.create({ 'videoID': vidID, '_id': counter.seq }, function (err, vid)
+        {
+          if (err)
+            console.log(err);
+        });
+      });
+    }
+  });
+
+  Video.findOne({ 'videoID': vidID }, function (error, video)
+  {
+    var __id = video._id;
+    Counter.findById('videos', function (error, counter)
+    {
+      Video.findOne({ '_id': counter.seq }, function (error, _video)
+      {
+        video.remove();
+        Video.create({ 'videoID': _video.videoID, '_id': __id }, function (err, vid)
+        {
+          _video.remove();
+          counter.seq = counter.seq - 1;
+          counter.save();
+        });
+      });
+    });
+  });
+}
+
 // internal function for removing a video by youtube ID
 exports.removeVideo = function (video_url_or_id)
 {
@@ -65,43 +106,7 @@ exports.removeVideo = function (video_url_or_id)
   }
   if (vidID)
   {
-
-
-    // Don't add duplicates to the database
-    BannedVideo.findOne({ 'videoID': vidID }, function (error, vid)
-    {
-      if (!vid)
-      {
-        Counter.findByIdAndUpdate('bannedvideos', { $inc: { seq: 1 } }, { new: true, upsert: true, setDefaultsOnInsert: true }, function (error, counter)
-        {
-          if (error)
-            return next(error);
-          BannedVideo.create({ 'videoID': vidID, '_id': counter.seq }, function (err, vid)
-          {
-            if (err)
-              console.log(err);
-          });
-        });
-      }
-    });
-
-    Video.findOne({ 'videoID': vidID }, function (error, video)
-    {
-      var __id = video._id;
-      Counter.findById('videos', function (error, counter)
-      {
-        Video.findOne({ '_id': counter.seq }, function (error, _video)
-        {
-          video.remove();
-          Video.create({ 'videoID': _video.videoID, '_id': __id }, function (err, vid)
-          {
-            _video.remove();
-            counter.seq = counter.seq - 1;
-            counter.save();
-          });
-        });
-      });
-    });
+    exports.removeVideoNoParse(vidID);
   }
 };
 
