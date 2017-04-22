@@ -344,6 +344,8 @@ table{
   width: auto;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
+  padding-top: .7em;
+  padding-bottom: .7em;
 }
 
 .custom-menu .pure-menu-link,
@@ -352,8 +354,6 @@ table{
   font-size: 110%;
   font-family: verdana;
   font-weight: bold;
-  padding-top: 1em;
-  padding-bottom: 1.2em;
 }
 
 .custom-menu .pure-menu-link:hover,
@@ -487,3 +487,20 @@ table{
 }
 
 /* Custom underline  */
+
+.block-line {
+  color: gray;
+  display: inline;
+  border-bottom: 3px;
+  solid
+  padding-bottom: 8px;
+  line-height: 1.75em;
+}
+
+.block-line:after,
+.block-line:before {
+  content: "";
+  display: block;
+  margin: 1em 0;
+
+}
