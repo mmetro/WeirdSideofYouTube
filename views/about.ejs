@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="./css/newstyle.css">
-<link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<div class="custom-menu-wrapper">
-  <div class="pure-menu custom-menu custom-menu-top">
-    <a href="/" class="pure-menu-heading custom-menu-brand">Home</a>
-    <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
-  </div>
-  <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
-    <div class="custom-menu-screen"></div>
-    <ul class="pure-menu-list">
-      <li class="pure-menu-item"><a href="/about" class="pure-menu-link">About Us</a></li>
-      <%if (user) { %>
-        <%if (user.admin) { %>
-          <li class="pure-menu-item"><a href="/admin" class="pure-menu-link">Admin Panel</a></li>
-        <% } %>
-        <li class="pure-menu-item"><a href="/history" class="pure-menu-link">View History</a></li>
-        <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
-        <li class="pure-menu-item"><a class="pure-menu-link"><p> Username: <%= user.username %> </p></a></li>
-      <% } %>
-      <%if (!user) { %>
-        <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
-        <li class="pure-menu-item"><a href="/register" class="pure-menu-link">Register</a></li>
-      <% } %>
-    </ul>
-  </div>
-</div>
-<script>
-(function (window, document) {
-document.getElementById('toggle').addEventListener('click', function (e) {
-    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
-    document.getElementById('toggle').classList.toggle('x');
-});
-})(this, this.document);
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./css/newstyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+</head>
+<body>
+  <div class="custom-menu-wrapper">
+	  <div class="pure-menu custom-menu">
+	    <a href="/" class="pure-menu-heading custom-menu-brand">Home</a>
+	    <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+	  </div>
+	  <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+	    <div class="custom-menu-screen"></div>
+	    <ul class="pure-menu-list">
+	      <li class="pure-menu-item"><a href="/about" class="pure-menu-link">About Us</a></li>
+	      <%if (user) { %>
+	        <%if (user.admin) { %>
+	          <li class="pure-menu-item"><a href="/admin" class="pure-menu-link">Admin Panel</a></li>
+	        <% } %>
+	        <li class="pure-menu-item"><a href="/history" class="pure-menu-link">View History</a></li>
+	        <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+	        <li class="pure-menu-item"><a class="pure-menu-link"><p> Username: <%= user.username %> </p></a></li>
+	      <% } %>
+	      <%if (!user) { %>
+	        <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
+	        <li class="pure-menu-item"><a href="/register" class="pure-menu-link">Register</a></li>
+	      <% } %>
+	    </ul>
+	  </div>
+	</div>
+	<script>
+	(function (window, document) {
+	document.getElementById('toggle').addEventListener('click', function (e) {
+	    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+	    document.getElementById('toggle').classList.toggle('x');
+	});
+	})(this, this.document);
 </script>
 <br>
 <br>
 <br>
-<body>
 	<div  id='textbox'>
 		<div  id='title'>
 			<h1>About Us!</h1>
