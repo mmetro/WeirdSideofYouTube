@@ -11,6 +11,9 @@ var Video = require('../models/video.js');
 var BannedVideo = require('../models/bannedvideo.js');
 var api = require('../controllers/api.js');
 
+var schedule = require('node-schedule');
+
+
 mongoose.connect(database.url);
 
 //Removes any videos that are either in the banned video list, or bans them if they're inaccessable.
@@ -29,7 +32,7 @@ exports.pruneVideoDatabase = function()
       var videoID = doc.videoID;
       var requestID = ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + videoID + '&key=' + youtubeAPIKey);
       //Short delay so we don't overuse the API
-      setTimeout(request, 100 * doc_count, requestID, videoID, function (error, response, body)
+      setTimeout(request, 250 * doc_count, requestID, videoID, function (error, response, body)
       {
         if (!error && response.statusCode == 200)
         {
@@ -57,4 +60,4 @@ exports.pruneVideoDatabase = function()
 exports.pruneVideoDatabase();
 
 // Run this function Hourly
-//schedule.scheduleJob('0 0 * * *', exports.pruneVideoDatabase);
+schedule.scheduleJob('0 0 * * *', exports.pruneVideoDatabase);
