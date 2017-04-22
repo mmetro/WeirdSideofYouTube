@@ -178,7 +178,7 @@ input {
   font-style: normal;
   font-variant: small-caps;
   font-weight: bold;
-  line-height: 48px !important;
+  line-height: 48px;
   margin-left: auto;
   margin-right: auto;
   color: rgb(240, 240, 240);
@@ -344,14 +344,14 @@ table{
   width: auto;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
-  padding-top: .7em;
-  padding-bottom: .7em;
+  padding-top: .4em;
+  padding-bottom: .4em;
 }
 
 .custom-menu .pure-menu-link,
 .custom-menu .pure-menu-heading {
   color: white;
-  font-size: 110%;
+  font-size: 130%;
   font-family: verdana;
   font-weight: bold;
 }
