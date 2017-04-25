@@ -366,9 +366,11 @@ table{
 .custom-menu-brand {
   display: block;
   text-align: center;
+  vertical-align: center;
   position: relative;
   font-weight:bold;
   height: 19px;
+  padding-bottom: 7.8px !important;
 }
 
 .custom-menu-toggle {
