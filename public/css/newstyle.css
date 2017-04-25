@@ -344,8 +344,6 @@ table{
   width: auto;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
-  padding-top: .4em;
-  padding-bottom: .4em;
 }
 
 .custom-menu .pure-menu-link,
@@ -369,6 +367,7 @@ table{
   display: block;
   text-align: center;
   position: relative;
+  font-weight:bold;
 }
 
 .custom-menu-toggle {
