@@ -368,6 +368,7 @@ table{
   text-align: center;
   position: relative;
   font-weight:bold;
+  height: 19px;
 }
 
 .custom-menu-toggle {
