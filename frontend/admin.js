@@ -68,11 +68,11 @@ function generateNewEntry(video) {
   linkTd.appendChild(youtubeLink);
 
   // Insert other metadata
-  tr.insertAdjacentHTML('beforeEnd', '<td><img src="//i.ytimg.com/vi/' + encodeURIComponent(video.videoID) + '/default.jpg" /></td>');
-  tr.insertAdjacentHTML('beforeEnd', '<td id="title"></td>');
-  tr.insertAdjacentHTML('beforeEnd', '<td>' + escape(video.views) + '</td>');
-  tr.insertAdjacentHTML('beforeEnd', '<td>' + escape(video.skips/video.views * 100) + '%</td>');
-  tr.insertAdjacentHTML('beforeEnd', '<td>' + escape(video.errorCount/video.views * 100) + '%</td>');
+  tr.insertAdjacentHTML('beforeEnd', '<td class = "data-cell"><img src="//i.ytimg.com/vi/' + encodeURIComponent(video.videoID) + '/default.jpg" /></td>');
+  tr.insertAdjacentHTML('beforeEnd', '<td class = "data-cell" id="title"></td>');
+  tr.insertAdjacentHTML('beforeEnd', '<td class = "data-cell">' + escape(video.views) + '</td>');
+  tr.insertAdjacentHTML('beforeEnd', '<td class = "data-cell">' + escape(video.skips/video.views * 100) + '%</td>');
+  tr.insertAdjacentHTML('beforeEnd', '<td class = "data-cell">' + escape(video.errorCount/video.views * 100) + '%</td>');
 
   // Retrieve title from server
   fetch('/api/getVidInfo/' + encodeURIComponent(video.videoID)).then(function(response) {

@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
  	<link rel="stylesheet" type="text/css" href="/css/newstyle.css">
 	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 </head>
 <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
 <body>
 
-<div id='navbar'>
-  <ul>
-    <li><a href='/'><span>Home</span></a></li>
-    <li><a href='/about'><span>About Us</span></a></li>
-    <%if (user) { %>
-      <%if (user.admin) { %>
-        <li class='active'><a href='/admin'><span>Admin Panel</span></a></li>
-      <% } %>
-      <li><a href='/history'><span>View History</span></a></li>
-      <li><a href="/logout"> Logout </a></li>
-      <li><p> Username: <%= user.username %> </p></li>
-    <% } %>
-    <%if (!user) { %>
-      <li><a href='/login'><span>Log In</span></a></li>
-      <li><a href='/register'><span>Register</span></a></li>
-    <% } %>
-   </ul>
-</div>
+	<div class="custom-menu-wrapper">
+	  <div class="pure-menu custom-menu">
+	    <a href="/" class="pure-menu-heading custom-menu-brand"> Home</a>
+	    <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+	  </div>
+	  <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+	    <div class="custom-menu-screen"></div>
+	    <ul class="pure-menu-list">
+	      <li class="pure-menu-item"><a href="/about" class="pure-menu-link">About Us</a></li>
+	      <%if (user) { %>
+	        <%if (user.admin) { %>
+	          <li class="pure-menu-item"><a href="/admin" class="pure-menu-link">Admin Panel</a></li>
+	        <% } %>
+	        <li class="pure-menu-item"><a href="/history" class="pure-menu-link">View History</a></li>
+	        <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+	        <li class="pure-menu-item"><a class="pure-menu-link custom-menu-brand"> Username: <%= user.username %> </a></li>
+	      <% } %>
+	      <%if (!user) { %>
+	        <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
+	        <li class="pure-menu-item"><a href="/register" class="pure-menu-link">Register</a></li>
+	      <% } %>
+	    </ul>
+	  </div>
+	</div>
+	<script>
+	(function (window, document) {
+	document.getElementById('toggle').addEventListener('click', function (e) {
+	    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+	    document.getElementById('toggle').classList.toggle('x');
+	});
+	})(this, this.document);
+	</script>
 
 <form action="/admin/submit" method="post" class="pure-form">
 	<span>
